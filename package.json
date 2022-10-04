@@ -13,11 +13,13 @@
   "license": "MIT",
   "author": "The CoreUI Team (https://github.com/orgs/coreui/people)",
   "scripts": {
-    "build": "react-scripts build",
     "changelog": "auto-changelog --starting-version 4.4.0 --commit-limit false --hide-credit",
     "eject": "react-scripts eject",
     "lint": "eslint \"src/**/*.js\"",
-    "start": "react-scripts start",
+    "start": "node server.js #Production only!",
+    "postinstall": "npm run build",
+    "dev": "react-scripts start",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "test:cov": "npm test -- --coverage --watchAll=false",
     "test:debug": "react-scripts --inspect-brk test --runInBand"
@@ -40,7 +42,8 @@
     "react-redux": "^8.0.2",
     "react-router-dom": "^6.3.0",
     "redux": "4.2.0",
-    "simplebar-react": "^2.4.1"
+    "simplebar-react": "^2.4.1",
+    "express": "^4.14.0"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.5",
