@@ -29,6 +29,7 @@ const AppSidebar = () => {
         dispatch({ type: 'set', sidebarShow: visible })
       }}
     >
+      <img src={require('../assets/images/logo.png')} />
       <CSidebarNav>
         <SimpleBar>
           <AppSidebarNav items={navigation} />

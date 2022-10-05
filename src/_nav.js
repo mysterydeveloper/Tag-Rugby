@@ -14,6 +14,11 @@ const _nav = [
     to: '/Register',
   },
   {
+    component: CNavItem,
+    name: 'Teams',
+    to: '/Teams',
+  },
+  {
     component: CNavTitle,
     name: 'Admin',
   },
@@ -31,6 +36,11 @@ const _nav = [
     component: CNavItem,
     name: 'Admin Users',
     to: '/AdminUsers',
+  },
+  {
+    component: CNavItem,
+    name: 'Events',
+    to: '/Events',
   },
 ]
 

@@ -132,7 +132,7 @@ See [the Releases section of our project](https://github.com/coreui/coreui-free-
 
 ## Creators
 
-**Łukasz Holeczek**
+**Manus Duggan**
 * <https://twitter.com/lukaszholeczek>
 * <https://github.com/mrholek>
 * <https://github.com/coreui>
@@ -187,7 +187,7 @@ Thanks to all the backers and sponsors! Support this project by [becoming a back
 
 ## Copyright and License
 
-copyright 2022 creativeLabs Łukasz Holeczek.   
+copyright 2022 creativeLabs Manus Duggan.   
 
  
 Code released under [the MIT license](https://github.com/coreui/coreui-free-react-admin-template/blob/master/LICENSE).

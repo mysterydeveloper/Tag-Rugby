@@ -30,10 +30,8 @@ const AppHeader = () => {
         >
           <CIcon icon={cilMenu} size="lg" />
         </CHeaderToggler>
-        <CHeaderBrand className="mx-auto d-md-none" to="/">
-          <CIcon icon={logo} height={48} alt="Logo" />
-        </CHeaderBrand>
-        <span className="justify-content-center">Tag Rugby</span>
+        <img src={require('../assets/images/logo.png')} width="300px" height="100px" />
+        <span className="justify-content-center"></span>
       </CContainer>
     </CHeader>
   )
