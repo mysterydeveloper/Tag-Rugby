@@ -6,7 +6,7 @@ sap.ui.define([
   return Controller.extend("tag.rugby.ui.modules.Register.Register", {
 
     onInit: function () {
-
+     
     },
   });
 

@@ -68,6 +68,11 @@
           "name": "Players",
           "pattern": "Players",
           "target": "Players"
+        },
+        {
+          "name": "Events",
+          "pattern": "Events",
+          "target": "Events"
         }
       ],
       "targets": {
@@ -91,6 +96,9 @@
         },
         "Players": {
           "name": "Players.Players"
+        },
+        "Events": {
+          "name": "Events.Events"
         }
       }
     }

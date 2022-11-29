@@ -1,0 +1,56 @@
+
+<mvc:View
+	controllerName="tag.rugby.ui.modules.Events.Events"
+    xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:custom="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+	<SplitApp
+		id="SplitAppDemo"
+		initialDetail="detail"
+		initialMaster="master">
+		<detailPages>
+			<Page
+				id="detail"
+				title="Detail"
+				backgroundDesign= "Solid">
+			</Page>
+		</detailPages>
+		<masterPages>
+			<Page
+				id="master2"
+				title="List"
+				backgroundDesign="List"
+				navButtonPress=".onPressMasterBack">
+				<VBox fitContainer="true">
+                    <OverflowToolbar class="sapFDynamicPageAlignContent">
+                        <OverflowToolbarButton icon="sap-icon://add" text="Add" type="Transparent" press=".onAdd"/>
+                    </OverflowToolbar>
+                    <Table
+                        id="events"
+                        items="{
+                            path: 'events>/'
+                        }"
+                        class="sapFDynamicPageAlignContent"
+                        width="auto">
+                        <columns>
+                            <Column width="12em">
+                                <Text text="Date"/>
+                            </Column>
+                            <Column	hAlign="End">
+                                <Text text="State"/>
+                            </Column>
+                        </columns>
+                        <items>
+                            <ColumnListItem type="Navigation" press=".onListItemPress" key="{events>_id}">
+                                <cells>
+                                    <ObjectIdentifier title="{events>Date}"/>
+                                    <ObjectIdentifier title="{events>State}"/>
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                </VBox>
+			</Page>
+		</masterPages>
+	</SplitApp>
+</mvc:View>

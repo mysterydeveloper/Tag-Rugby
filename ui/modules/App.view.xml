@@ -23,8 +23,9 @@
                 <tnt:NavigationListItem id="Teams" key="Teams" select="selectedItem" text="{i18n>Teams}" icon="sap-icon://group" />
                 <tnt:NavigationListItem id="Rules" key="Rules" select="selectedItem" text="{i18n>Rules}" icon="sap-icon://information" />
                 <tnt:NavigationListItem id="Plays" key="Plays" select="selectedItem" text="{i18n>Plays}" icon="sap-icon://approvals" />
-                <tnt:NavigationListItem id="Admin" key="Admin" select="selectedItem" text="{i18n>Admin}" icon="sap-icon://key-user-settings" />
                 <tnt:NavigationListItem id="Players" key="Players" select="selectedItem" text="{i18n>Players}" icon="sap-icon://employee" />
+                <tnt:NavigationListItem id="Events" key="Events" select="selectedItem" text="{i18n>Events}" icon="sap-icon://keyboard-and-mouse" />
+                <tnt:NavigationListItem id="Admin" key="Admin" select="selectedItem" text="{i18n>Admin}" icon="sap-icon://key-user-settings" />
               </tnt:NavigationList>
             </tnt:item>
           </tnt:SideNavigation>

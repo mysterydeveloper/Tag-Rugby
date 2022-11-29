@@ -36,18 +36,7 @@ sap.ui.define([
     initSampleDataModel: function () {
 
 
-      $.ajax({
-        type: "POST",
-        url: "/api/read/",
-        data: {
-          id: 'oP31fZoXLdnJo0k8DZKb',
-          gender: "Female"
-        },
-        success: function (oData) {
-          console.log(oData);
-        },
-        datatype: "jsonp",
-      });
+    
     },
 
   });
