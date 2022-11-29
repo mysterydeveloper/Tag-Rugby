@@ -28,7 +28,6 @@ sap.ui.define([
     },
 
     selectedItem: function(oEvent) {
-        this._oShellToolPage.toggleSideContentMode();
         console.log(oEvent.getSource().mProperties.key);
         var oRouter = this.getOwnerComponent().getRouter();
         oRouter.navTo(oEvent.getSource().mProperties.key);
