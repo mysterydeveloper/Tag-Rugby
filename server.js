@@ -3,40 +3,44 @@ const path = require('path');
 
 const app = express();
 const port = process.env.PORT || 3000;
-
-app.use(express.static(path.resolve(__dirname, 'build')));
+var bodyParser = require('body-parser')
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+app.use(bodyParser.json())
+app.use(express.static(path.resolve(__dirname, 'ui')));
+// Parse JSON bodies (as sent by API clients)
+app.use(express.json());
 
 var Datastore = require('nedb'), db = new Datastore({ filename: 'db/dbfile', autoload: true });
 // db.insert([{ a: 5 }, { a: 42 }], function (err, newDocs) {
 //     console.log(newDocs);
 // });
-app.get('/app', (req, res) => {
-  res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
-});
 
-app.get('/api/read', (req, res) => {
-  db.find({ a: 5 }, function (err, docs) {
-    console.log(docs);
+app.post('/api/read', (req, res) => {
+	console.log(req.body)
+
+  db.find(req.body, function (err, docs) {
     res.json(docs);
   });
 });
 
-app.get('/api/create', (req, res) => {
-  db.insert({ a: 5 }, function (err, newDocs) {
-    console.log(newDocs);
+app.post('/api/create', (req, res) => {
+	console.log(req.body)
+  db.insert(req.body, function (err, newDocs) {
     res.json(newDocs);
   });
 });
 
-app.get('/api/update', (req, res) => {
-	db.update({  _id: '2JnhP9SgdVP7hHr6' }, { $set: { "data.satellites": 2, "data.red": true } }, {}, function (err, docs) {
+app.post('/api/update', (req, res) => {
+	db.update(req.body, {}, function (err, docs) {
 			console.log(docs);
 			res.json(docs);
 	});
 });
 
-app.get('/api/delete', (req, res) => {
-	db.remove({ a: 5 }, function (err, numRemoved) {
+app.post('/api/delete', (req, res) => {
+	db.remove(req.body, {multi: true}, function (err, numRemoved) {
 		console.log(numRemoved);
 		res.json(numRemoved);
 	});

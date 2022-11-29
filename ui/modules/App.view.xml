@@ -1,0 +1,40 @@
+<mvc:View
+	controllerName="tag.rugby.ui.modules.App"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:tnt="sap.tnt" height="100%">
+    <App id="idAppControl">
+      <tnt:ToolPage id="idShellToolPage" sideExpanded="true">
+        <tnt:header>
+          <tnt:ToolHeader class="sapUiSizeCompact" width="100%">
+            <Button id="idNavItemButtonCollapsExpand" type="Transparent" icon="sap-icon://menu2" press="onSideNavigationExpandedToggle"/>
+            <Image press="onImageAptivPress" src="assets/images/aptiv.svg"/>
+            <ToolbarSpacer/>
+            <Label text="{AppModel>/appPageTitle}"/>
+            <ToolbarSpacer/>
+            <Button type="Transparent" text="{i18n>toolbar.welcome}, {UserModel>/firstName}" press="onUserNamePress"/>
+            <Button type="Transparent" icon="sap-icon://log" press="onButtonLogOffPress"/>
+          </tnt:ToolHeader>
+        </tnt:header>
+  
+        <tnt:sideContent>
+          <tnt:SideNavigation id="idSideNavigation" itemSelect="onSideNavigationItemSelect">
+            <tnt:item>
+              <tnt:NavigationList>
+                <tnt:NavigationListItem id="Home" text="{i18n>Home}" icon="sap-icon://home" />
+                <tnt:NavigationListItem id="Register" text="{i18n>Register}" icon="sap-icon://add-product" />
+                <tnt:NavigationListItem id="Teams" text="{i18n>Teams}" icon="sap-icon://group" />
+                <tnt:NavigationListItem id="Rules" text="{i18n>Rules}" icon="sap-icon://information" />
+                <tnt:NavigationListItem id="Admin" text="{i18n>Admin}" icon="sap-icon://key-user-settings" />
+                <tnt:NavigationListItem id="Players" text="{i18n>Players}" icon="sap-icon://employee" />
+              </tnt:NavigationList>
+            </tnt:item>
+          </tnt:SideNavigation>
+        </tnt:sideContent>
+  
+        <tnt:mainContents>
+          <NavContainer id="rootControl" class="sapUiSizeCompact" busyIndicatorDelay="50"/>
+        </tnt:mainContents>
+      </tnt:ToolPage>
+    </App>
+  </mvc:View>

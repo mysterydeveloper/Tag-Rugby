@@ -1,0 +1,58 @@
+{
+  "sap.app": {
+    "id": "tag.rugby.ui",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "1.0.0"
+    }
+  },
+  "sap.ui5": {
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "tag.rugby.ui.i18n.i18n"
+        }
+      }
+    },
+    "dependencies": {
+      "minUI5Version": "1.98.0"
+    },
+    "rootView": {
+      "viewName": "tag.rugby.ui.modules.App",
+      "type": "XML",
+      "async": true
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "path": "tag.rugby.ui.modules",
+        "controlId": "rootControl",
+        "controlAggregation": "pages",
+        "type": "View",
+        "viewType": "XML",
+        "async": true
+      },
+      "routes": [{
+          "name": "Home",
+          "pattern": "",
+          "target": "Home"
+        },
+        {
+          "name": "Register",
+          "pattern": "Register",
+          "target": "Register"
+        }
+      ],
+      "targets": {
+        "Home": {
+          "name": "Home.Home"
+        },
+        "Register": {
+          "name": "Register.Register"
+        }
+      }
+    }
+  }
+}
