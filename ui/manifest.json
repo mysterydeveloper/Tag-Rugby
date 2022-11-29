@@ -43,6 +43,31 @@
           "name": "Register",
           "pattern": "Register",
           "target": "Register"
+        },
+        {
+          "name": "Teams",
+          "pattern": "Teams",
+          "target": "Teams"
+        },
+        {
+          "name": "Rules",
+          "pattern": "Rules",
+          "target": "Rules"
+        },
+        {
+          "name": "Plays",
+          "pattern": "Plays",
+          "target": "Plays"
+        },
+        {
+          "name": "Admin",
+          "pattern": "Admin",
+          "target": "Admin"
+        },
+        {
+          "name": "Players",
+          "pattern": "Players",
+          "target": "Players"
         }
       ],
       "targets": {
@@ -51,6 +76,21 @@
         },
         "Register": {
           "name": "Register.Register"
+        },
+        "Teams": {
+          "name": "Teams.Teams"
+        },
+        "Rules": {
+          "name": "Rules.Rules"
+        },
+        "Plays": {
+          "name": "Plays.Plays"
+        },
+        "Admin": {
+          "name": "Admin.Admin"
+        },
+        "Players": {
+          "name": "Players.Players"
         }
       }
     }

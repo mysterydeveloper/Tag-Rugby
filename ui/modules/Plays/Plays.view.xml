@@ -1,17 +1,17 @@
 <mvc:View
-	controllerName="tag.rugby.ui.modules.Home.Home"
+	controllerName="tag.rugby.ui.modules.Plays.Plays"
     xmlns="sap.m"
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns:core="sap.ui.core"
 	height="100%">
 
 	<Page
-		title="Page"
+		title="Plays"
 		class="sapUiContentPadding" >
-		<customHeader>
+        <customHeader>
 			<Toolbar>
 				<ToolbarSpacer/>
-				<Title text="Home" level="H2"/>
+				<Title text="Plays" level="H2"/>
 				<ToolbarSpacer/>
 			</Toolbar>
 		</customHeader>

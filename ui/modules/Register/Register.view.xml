@@ -8,6 +8,14 @@
 	<Page
 		title="Register"
 		class="sapUiContentPadding" >
+        <customHeader>
+			<Toolbar>
+				<ToolbarSpacer/>
+				<Title text="Register" level="H2"/>
+				<ToolbarSpacer/>
+			</Toolbar>
+
+		</customHeader>
 		<content>
 			
 		</content>
