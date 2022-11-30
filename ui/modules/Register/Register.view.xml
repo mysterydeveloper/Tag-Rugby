@@ -83,7 +83,7 @@
                       <f:fields>
                         <VBox fitContainer="true">
                           <Table id="regMalePlayers" items="{
-                                                              path: 'malePlayers>/',
+                                                              path: 'MalePlayers>/',
                                                               sorter: {
                                                                   path: 'number',
                                                                   group: '.grouper'
@@ -102,8 +102,8 @@
                             <items>
                               <ColumnListItem type="Active">
                                 <cells>
-                                  <ObjectIdentifier title="{malePlayers>number}" />
-                                  <ObjectIdentifier title="{malePlayers>name}" />
+                                  <ObjectIdentifier title="{MalePlayers>number}" />
+                                  <ObjectIdentifier title="{MalePlayers>name}" />
                                 </cells>
                               </ColumnListItem>
                             </items>
@@ -118,7 +118,7 @@
                     <f:FormElement label="Female Players">
                       <f:fields>
                         <Table id="regFemalePlayers" items="{
-                                                              path: 'femalePlayers>/',
+                                                              path: 'FemalePlayers>/',
                                                               sorter: {
                                                                   path: 'number',
                                                                   group: '.grouper'
@@ -137,8 +137,8 @@
                           <items>
                             <ColumnListItem type="Active">
                               <cells>
-                                <ObjectIdentifier title="{femalePlayers>number}" />
-                                <ObjectIdentifier title="{femalePlayers>name}" />
+                                <ObjectIdentifier title="{FemalePlayers>number}" />
+                                <ObjectIdentifier title="{FemalePlayers>name}" />
                               </cells>
                             </ColumnListItem>
                           </items>

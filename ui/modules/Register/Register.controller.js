@@ -77,7 +77,7 @@ sap.ui.define([
             element.number = counter++;
           });
           var oModel = new JSONModel(oData);
-          this.getView().setModel(oModel, "malePlayers");
+          this.getView().setModel(oModel, "MalePlayers");
         }.bind(this),
         datatype: "jsonp",
       });
@@ -104,7 +104,7 @@ sap.ui.define([
 
           });
           var oModel = new JSONModel(oData);
-          this.getView().setModel(oModel, "femalePlayers");
+          this.getView().setModel(oModel, "FemalePlayers");
         }.bind(this),
         datatype: "jsonp",
       });
@@ -164,15 +164,13 @@ sap.ui.define([
     },
 
     onDelete: function () {
+        console.log(this.getView().getModel().getProperty("/number") );
+    let data = this.getView().getModel(this.gender[this.getView().getModel().getProperty("/numbergender")]+"Players")[this.getView().getModel().getProperty("/number") -1];
+
       $.ajax({
         type: "POST",
         url: "/api/delete/",
-        data: {
-          type: 'Register',
-          name: this.getView().getModel().getProperty("/name"),
-          id: this.getView().getModel("event").getProperty("/_id"),
-          gender: this.gender[this.getView().getModel().getProperty("/gender")]
-        },
+        data: data,
         success: function (oData) {
           this.refreshMaleFemaleTables(this.getView().getModel("event").getProperty("/_id"))
         }.bind(this),
