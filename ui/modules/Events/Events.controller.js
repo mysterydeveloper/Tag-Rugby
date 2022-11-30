@@ -13,8 +13,6 @@ sap.ui.define([
       });
       this.getView().setModel(oModel);
       this.refresh();
-      this.getSplitAppObj().toMaster(this.createId("master"));
-      this.getSplitAppObj().showMaster();
     },
 
     refresh: function () {
@@ -37,7 +35,8 @@ sap.ui.define([
       var oModel = new JSONModel(data);
       this.getView().setModel(oModel, "event");
       this.getSplitAppObj().toDetail(this.createId("detail"));
-      this.getView().getModel().setProperty("/type", "update")
+      this.getView().getModel().setProperty("/type", "update");
+      this.getView().getModel().setProperty("/mode", "HideMode");
 
       $.ajax({
         type: "POST",
@@ -95,8 +94,8 @@ sap.ui.define([
     },
 
     onPressMasterBack: function () {
-        console.log("this");
-        this.getSplitAppObj().showMaster();
+      this.getView().getModel().setProperty("/mode", "StretchCompressMode");
+
     },
 
     getSplitAppObj: function () {
@@ -128,13 +127,12 @@ sap.ui.define([
     },
 
     onSave: function () {
-        let url = "";
-        if(this.getView().getModel().getProperty("/type") == "update"){
-            url = "/api/update/";
-        }
-        else{
-            url = "/api/create/"
-        }
+      let url = "";
+      if (this.getView().getModel().getProperty("/type") == "update") {
+        url = "/api/update/";
+      } else {
+        url = "/api/create/"
+      }
       $.ajax({
         type: "POST",
         url: url,
@@ -168,7 +166,9 @@ sap.ui.define([
     },
 
     onAdd: function () {
-      var oModel = new JSONModel({type: "Event"});
+      var oModel = new JSONModel({
+        type: "Event"
+      });
       this.getView().setModel(oModel, "event");
       this.getSplitAppObj().toDetail(this.createId("detail"));
       this.getView().getModel().setProperty("/editMode", true)

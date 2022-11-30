@@ -36,6 +36,8 @@ sap.ui.define([
     },
 
     onListItemPress: function (oEvent) {
+      this.getView().getModel().setProperty("/mode", "HideMode");
+
       var data = this.getView().getModel("events").oData[oEvent.getSource().oBindingContexts.events.sPath.split("/")[1]];
       var oModel = new JSONModel(data);
       this.getView().setModel(oModel, "event");
@@ -101,7 +103,7 @@ sap.ui.define([
       });
     },
     onPressMasterBack: function () {
-        this.getSplitAppObj().showMaster();
+      this.getView().getModel().setProperty("/mode", "StretchCompressMode");
     },
 
     getSplitAppObj: function () {

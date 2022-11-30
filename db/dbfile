@@ -118,3 +118,5 @@
 {"type":"Register","time":"1669823399399","name":"etsaet","id":"rz9who0HnuZyDUm3","gender":"Male","_id":"iMAUzzALHcHIY7sf"}
 {"type":"Register","time":"1669823399905","name":"etsaet","id":"rz9who0HnuZyDUm3","gender":"Male","_id":"Wap8eylbfHtMnyHO"}
 {"$$deleted":true,"_id":"rz9who0HnuZyDUm3"}
+{"_id":"t0IqkXkcmxYrxbo2","type":"Event","Date":"22/11/2022","State":"Active"}
+{"type":"Register","time":"1669826369881","name":"test","id":"t0IqkXkcmxYrxbo2","gender":"Female","_id":"61UDyoTZpMM5s154"}
