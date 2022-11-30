@@ -164,9 +164,12 @@ sap.ui.define([
     },
 
     onDelete: function () {
-        console.log(this.getView().getModel().getProperty("/number") );
-    let data = this.getView().getModel(this.gender[this.getView().getModel().getProperty("/numbergender")]+"Players")[this.getView().getModel().getProperty("/number") -1];
-
+      console.log(this.getView().getModel().getProperty("/number"));
+      console.log(this.getView().getModel(this.gender[this.getView().getModel().getProperty("/numbergender")] + "Players"));
+      let data = this.getView().getModel(this.gender[this.getView().getModel().getProperty("/numbergender")] + "Players").oData[this.getView().getModel().getProperty("/number") - 1];
+      console.log(data);
+      delete data["inOrOut"];
+      delete data["number"];
       $.ajax({
         type: "POST",
         url: "/api/delete/",
