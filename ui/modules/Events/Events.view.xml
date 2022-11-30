@@ -2,8 +2,10 @@
 <mvc:View
 	controllerName="tag.rugby.ui.modules.Events.Events"
     xmlns="sap.m"
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
 	xmlns:mvc="sap.ui.core.mvc"
-	xmlns:custom="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+	xmlns:core="sap.ui.core">
 	<SplitApp
 		id="SplitAppDemo"
 		initialDetail="detail"
@@ -11,14 +13,154 @@
 		<detailPages>
 			<Page
 				id="detail"
-				title="Detail"
-				backgroundDesign= "Solid">
+				title="Event"
+				backgroundDesign= "Solid"
+				showNavButton="true"
+                navButtonPress=".onPressMasterBack">
+                <VBox class="sapUiSmallMargin">
+                    <f:Form id="FormChange354wideDual">
+                        <f:layout>
+                            <f:ResponsiveGridLayout
+                                labelSpanXL="4"
+                                labelSpanL="3"
+                                labelSpanM="4"
+                                labelSpanS="12"
+                                adjustLabelSpan="false"
+                                emptySpanXL="0"
+                                emptySpanL="4"
+                                emptySpanM="0"
+                                emptySpanS="0"
+                                columnsXL="2"
+                                columnsL="1"
+                                columnsM="1"
+                                singleContainerFullSize="false" />
+                        </f:layout>
+                        <f:formContainers>
+                            <f:FormContainer title="Details">
+                                <f:formElements>
+                                    <f:FormElement label="Event Date">
+                                        <f:fields>
+                                            <Input value="{event>/Date}" id="date" enabled="{/editMode}" />
+                                        </f:fields>
+                                    </f:FormElement>
+                                    <f:FormElement label="Event Status">
+                                        <f:fields>
+                                            <Input value="{event>/State}" id="status" enabled="{/editMode}"/>
+                                        </f:fields>
+                                    </f:FormElement>
+                                </f:formElements>
+                            </f:FormContainer>
+                        </f:formContainers>
+                    </f:Form>
+                        <f:Form id="FormChange354wideDuals"
+                        editable="false">
+                            <f:layout>
+                                <f:ResponsiveGridLayout
+                                    labelSpanXL="4"
+                                    labelSpanL="4"
+                                    labelSpanM="12"
+                                    labelSpanS="12"
+                                    adjustLabelSpan="false"
+                                    emptySpanXL="0"
+                                    emptySpanL="0"
+                                    emptySpanM="0"
+                                    emptySpanS="0"
+                                    columnsXL="2"
+                                    columnsL="2"
+                                    columnsM="1"
+                                    singleContainerFullSize="false" />
+                            </f:layout>
+                            <f:formContainers>
+                            <f:FormContainer >
+                                <f:formElements>
+                                    <f:FormElement label="Male Players">
+                                        <f:fields>
+                                            <VBox fitContainer="true">
+                                                <Table
+                                                    id="MalePlayers"
+                                                    items="{
+                                                        path: 'malePlayers>/',
+                                                        sorter: {
+                                                            path: 'number',
+                                                            group: '.grouper'
+                                                        },
+                                                        groupHeaderFactory: '.getGroupHeader'
+                                                    }"
+                                                    class="sapFDynamicPageAlignContent"
+                                                    visibleRowCount="7"
+                                                    minAutoRowCount="5"
+                                                    visibleRowCountMode="Fixed"
+                                                    width="auto">
+                                                    <columns>
+                                                        <Column width="12em">
+                                                            <Text text="#"/>
+                                                        </Column>
+                                                        <Column	hAlign="End">
+                                                            <Text text="Name"/>
+                                                        </Column>
+                                                    </columns>
+                                                    <items>
+                                                        <ColumnListItem type="Active">
+                                                            <cells>
+                                                                <ObjectIdentifier title="{malePlayers>number}"/>
+                                                                    <ObjectIdentifier title="{malePlayers>name}"/>
+                                                            </cells>
+                                                        </ColumnListItem>
+                                                    </items>
+                                                </Table>
+                                            </VBox>
+                                        </f:fields>
+                                    </f:FormElement>
+                                </f:formElements>
+                            </f:FormContainer>
+                            <f:FormContainer >
+                                <f:formElements>
+                                    <f:FormElement label="Female Players">
+                                        <f:fields>
+                                            <Table
+                                                    id="FemalePlayers"
+                                                    items="{
+                                                        path: 'femalePlayers>/',
+                                                        sorter: {
+                                                            path: 'number',
+                                                            group: '.grouper'
+                                                        },
+                                                        groupHeaderFactory: '.getGroupHeader'
+                                                    }"
+                                                    class="sapFDynamicPageAlignContent"
+                                                    visibleRowCount="7"
+                                                    minAutoRowCount="5"
+                                                    width="auto">
+                                                    <columns>
+                                                        <Column width="12em">
+                                                            <Text text="#"/>
+                                                        </Column>
+                                                        <Column	hAlign="End">
+                                                            <Text text="Name"/>
+                                                        </Column>
+                                                    </columns>
+                                                    <items>
+                                                        <ColumnListItem type="Active">
+                                                            <cells>
+                                                                <ObjectIdentifier title="{femalePlayers>number}"/>
+                                                                <ObjectIdentifier title="{femalePlayers>name}"/>
+                                                            </cells>
+                                                        </ColumnListItem>
+                                                    </items>
+                                                </Table>
+                                        </f:fields>
+                                    </f:FormElement>
+                                </f:formElements>
+                            </f:FormContainer>
+                        </f:formContainers>
+                    </f:Form>
+                </VBox>
 			</Page>
 		</detailPages>
 		<masterPages>
 			<Page
 				id="master2"
-				title="List"
+				title="Events"
 				backgroundDesign="List"
 				navButtonPress=".onPressMasterBack">
 				<VBox fitContainer="true">
