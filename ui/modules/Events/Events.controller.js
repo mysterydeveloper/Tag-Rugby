@@ -167,6 +167,7 @@ sap.ui.define([
     },
 
     onAdd: function () {
+      this.getView().getModel().setProperty("/mode", "HideMode");
       var oModel = new JSONModel({
         type: "Event"
       });
