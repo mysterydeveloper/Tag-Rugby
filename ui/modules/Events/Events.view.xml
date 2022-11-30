@@ -121,7 +121,7 @@
       </Page>
     </detailPages>
     <masterPages>
-      <Page id="master2" title="Events" backgroundDesign="List" navButtonPress=".onPressMasterBack">
+      <Page id="master" title="Events" backgroundDesign="List" navButtonPress=".onPressMasterBack">
         <VBox fitContainer="true">
           <OverflowToolbar class="sapFDynamicPageAlignContent">
             <OverflowToolbarButton icon="sap-icon://add" text="Add" type="Transparent" press=".onAdd" />

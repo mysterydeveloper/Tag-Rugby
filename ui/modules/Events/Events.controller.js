@@ -13,7 +13,7 @@ sap.ui.define([
       });
       this.getView().setModel(oModel);
       this.refresh();
-
+      this.getSplitAppObj().toMaster(this.createId("master"));
     },
 
     refresh: function () {
@@ -94,7 +94,8 @@ sap.ui.define([
     },
 
     onPressMasterBack: function () {
-      this.getSplitAppObj().backMaster();
+        console.log("this");
+        this.getSplitAppObj().showMaster();
     },
 
     getSplitAppObj: function () {
