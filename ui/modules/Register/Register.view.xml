@@ -1,8 +1,9 @@
 <mvc:View controllerName="tag.rugby.ui.modules.Register.Register" xmlns="sap.m" xmlns:l="sap.ui.layout"
-xmlns:f="sap.ui.layout.form" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core">
+  xmlns:f="sap.ui.layout.form" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core">
   <SplitApp id="regSplitAppDemo" initialDetail="regdetail" mode="{/mode}" initialMaster="regmaster">
     <masterPages>
-      <Page id="regmaster" title="Events" backgroundDesign="List" navButtonPress=".onPressMasterBack">
+      <Page id="regmaster" title="Events Available for Registration " backgroundDesign="List"
+        navButtonPress=".onPressMasterBack">
         <VBox fitContainer="true">
           <Table id="events" items="{
                                 path: 'events>/'
@@ -28,46 +29,60 @@ xmlns:f="sap.ui.layout.form" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core
       </Page>
     </masterPages>
     <detailPages>
-        <Page id="regdetail" title="Event" backgroundDesign="Solid" showNavButton="true" navButtonPress=".onPressMasterBack">
-          <content>
-            <VBox class="sapUiSmallMargin">
-              <f:Form id="regFormChange354wideDual">
-                <f:layout>
-                  <f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="3" labelSpanM="4" labelSpanS="12"
-                    adjustLabelSpan="false" emptySpanXL="0" emptySpanL="4" emptySpanM="0" emptySpanS="0" columnsXL="2"
-                    columnsL="1" columnsM="1" singleContainerFullSize="false" />
-                </f:layout>
-                <f:formContainers>
-                  <f:FormContainer>
-                    <f:formElements>
-                      <f:FormElement label="Enter Name">
-                        <f:fields>
-                          <Input value="{/name}" id="Name" />
-                          <RadioButtonGroup id="rbg2" columns="2" selectedIndex="{/gender}" class="sapUiMediumMarginBottom">
-                              <RadioButton id="male" text="Male" />
-                              <RadioButton id="female" text="Female" />
-                          </RadioButtonGroup>
-                          <Button text="Add" enabled="{= ${/Name}.length>0}" press="onAdd" />
-                          <Button text="Remove" visible="{= ${/Name}.length>0}" press="onDelete" />
-                        </f:fields>
-                      </f:FormElement>
-                    </f:formElements>
-                  </f:FormContainer>
-                </f:formContainers>
-              </f:Form>
-              <f:Form id="regFormChange354wideDuals" editable="false">
-                <f:layout>
-                  <f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12"
-                    adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2"
-                    columnsL="2" columnsM="1" singleContainerFullSize="false" />
-                </f:layout>
-                <f:formContainers>
-                  <f:FormContainer>
-                    <f:formElements>
-                      <f:FormElement label="Male Players">
-                        <f:fields>
-                          <VBox fitContainer="true">
-                            <Table id="regMalePlayers" items="{
+      <Page id="regdetail" title="Registration" backgroundDesign="Solid" showNavButton="true"
+        navButtonPress=".onPressMasterBack">
+        <content>
+          <VBox class="sapUiSmallMargin">
+            <f:Form id="regFormChange354wideDual">
+              <f:layout>
+                <f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="3" labelSpanM="4" labelSpanS="12"
+                  adjustLabelSpan="false" emptySpanXL="0" emptySpanL="4" emptySpanM="0" emptySpanS="0" columnsXL="2"
+                  columnsL="1" columnsM="1" singleContainerFullSize="false" />
+              </f:layout>
+              <f:formContainers>
+                <f:FormContainer>
+                  <f:formElements>
+                    <f:FormElement label="Enter Name" visible="{/addMode}">
+                      <f:fields>
+                        <Input value="{/name}" id="Name" />
+                        <RadioButtonGroup id="rbg2" columns="2" selectedIndex="{/gender}"
+                          class="sapUiMediumMarginBottom">
+                          <RadioButton id="male" text="Male" />
+                          <RadioButton id="female" text="Female" />
+                        </RadioButtonGroup>
+                        <Button text="Add" enabled="{= ${/Name}.length>0}" press="onAdd" />
+                        <Button text="Remove" visible="{= ${/Name}.length>0}" press="showDelete" />
+                      </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="Delete number" visible="{/removeMode}">
+                      <f:fields>
+                        <Input value="{/number}" />
+                        <RadioButtonGroup id="rbg2s" columns="2" selectedIndex="{/numbergender}"
+                          class="sapUiMediumMarginBottom">
+                          <RadioButton id="male1" text="Male" />
+                          <RadioButton id="female2" text="Female" />
+                        </RadioButtonGroup>
+                        <Button text="Remove" visible="{= ${/Name}.length>0}" press="onDelete" />
+                        <Button text="Add" enabled="{= ${/Name}.length>0}" press="showAdd" />
+                      </f:fields>
+                    </f:FormElement>
+                  </f:formElements>
+                </f:FormContainer>
+              </f:formContainers>
+            </f:Form>
+            <f:Form id="regFormChange354wideDuals" editable="false">
+              <f:layout>
+                <f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12"
+                  adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2"
+                  columnsL="2" columnsM="1" singleContainerFullSize="false" />
+              </f:layout>
+              <f:formContainers>
+                <f:FormContainer>
+                  <f:formElements>
+                    <f:FormElement label="Male Players">
+                      <f:fields>
+                        <VBox fitContainer="true">
+                          <Table id="regMalePlayers" items="{
                                                               path: 'malePlayers>/',
                                                               sorter: {
                                                                   path: 'number',
@@ -75,42 +90,7 @@ xmlns:f="sap.ui.layout.form" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core
                                                               },
                                                               groupHeaderFactory: '.getGroupHeader'
                                                           }" class="sapFDynamicPageAlignContent" visibleRowCount="7"
-                              minAutoRowCount="5" visibleRowCountMode="Fixed" width="auto">
-                              <columns>
-                                <Column width="12em">
-                                  <Text text="#" />
-                                </Column>
-                                <Column hAlign="End">
-                                  <Text text="Name" />
-                                </Column>
-                              </columns>
-                              <items>
-                                <ColumnListItem type="Active">
-                                  <cells>
-                                    <ObjectIdentifier title="{malePlayers>number}" />
-                                    <ObjectIdentifier title="{malePlayers>name}" />
-                                  </cells>
-                                </ColumnListItem>
-                              </items>
-                            </Table>
-                          </VBox>
-                        </f:fields>
-                      </f:FormElement>
-                    </f:formElements>
-                  </f:FormContainer>
-                  <f:FormContainer>
-                    <f:formElements>
-                      <f:FormElement label="Female Players">
-                        <f:fields>
-                          <Table id="regFemalePlayers" items="{
-                                                              path: 'femalePlayers>/',
-                                                              sorter: {
-                                                                  path: 'number',
-                                                                  group: '.grouper'
-                                                              },
-                                                              groupHeaderFactory: '.getGroupHeader'
-                                                          }" class="sapFDynamicPageAlignContent" visibleRowCount="7"
-                            minAutoRowCount="5" width="auto">
+                            minAutoRowCount="5" visibleRowCountMode="Fixed" width="auto">
                             <columns>
                               <Column width="12em">
                                 <Text text="#" />
@@ -122,21 +102,56 @@ xmlns:f="sap.ui.layout.form" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core
                             <items>
                               <ColumnListItem type="Active">
                                 <cells>
-                                  <ObjectIdentifier title="{femalePlayers>number}" />
-                                  <ObjectIdentifier title="{femalePlayers>name}" />
+                                  <ObjectIdentifier title="{malePlayers>number}" />
+                                  <ObjectIdentifier title="{malePlayers>name}" />
                                 </cells>
                               </ColumnListItem>
                             </items>
                           </Table>
-                        </f:fields>
-                      </f:FormElement>
-                    </f:formElements>
-                  </f:FormContainer>
-                </f:formContainers>
-              </f:Form>
-            </VBox>
-          </content>
-        </Page>
-      </detailPages>
+                        </VBox>
+                      </f:fields>
+                    </f:FormElement>
+                  </f:formElements>
+                </f:FormContainer>
+                <f:FormContainer>
+                  <f:formElements>
+                    <f:FormElement label="Female Players">
+                      <f:fields>
+                        <Table id="regFemalePlayers" items="{
+                                                              path: 'femalePlayers>/',
+                                                              sorter: {
+                                                                  path: 'number',
+                                                                  group: '.grouper'
+                                                              },
+                                                              groupHeaderFactory: '.getGroupHeader'
+                                                          }" class="sapFDynamicPageAlignContent" visibleRowCount="7"
+                          minAutoRowCount="5" width="auto">
+                          <columns>
+                            <Column width="12em">
+                              <Text text="#" />
+                            </Column>
+                            <Column hAlign="End">
+                              <Text text="Name" />
+                            </Column>
+                          </columns>
+                          <items>
+                            <ColumnListItem type="Active">
+                              <cells>
+                                <ObjectIdentifier title="{femalePlayers>number}" />
+                                <ObjectIdentifier title="{femalePlayers>name}" />
+                              </cells>
+                            </ColumnListItem>
+                          </items>
+                        </Table>
+                      </f:fields>
+                    </f:FormElement>
+                  </f:formElements>
+                </f:FormContainer>
+              </f:formContainers>
+            </f:Form>
+          </VBox>
+        </content>
+      </Page>
+    </detailPages>
   </SplitApp>
 </mvc:View>

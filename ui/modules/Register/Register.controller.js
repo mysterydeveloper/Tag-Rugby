@@ -8,16 +8,22 @@ sap.ui.define([
   return Controller.extend("tag.rugby.ui.modules.Register.Register", {
 
     gender: {
-        0: "Male",
-        1: "Female"
+      0: "Male",
+      1: "Female"
     },
 
     onInit: function () {
-      var oModel = new JSONModel({gender:0, name:""});
+      var oModel = new JSONModel({
+        gender: 0,
+        name: "",
+        number: "",
+        numbergender: 0,
+        addMode: true,
+        removeMode: false
+      });
       this.getView().setModel(oModel);
       this.refresh();
       this.getView().getModel().setProperty("/mode", "StretchCompressMode");
-
     },
 
     refresh: function () {
@@ -136,6 +142,33 @@ sap.ui.define([
         data: {
           type: 'Register',
           time: new Date().getTime(),
+          name: this.getView().getModel().getProperty("/name"),
+          id: this.getView().getModel("event").getProperty("/_id"),
+          gender: this.gender[this.getView().getModel().getProperty("/gender")]
+        },
+        success: function (oData) {
+          this.refreshMaleFemaleTables(this.getView().getModel("event").getProperty("/_id"))
+        }.bind(this),
+        datatype: "jsonp",
+      });
+    },
+
+    showDelete: function () {
+      this.getView().getModel().setProperty("/addMode", false);
+      this.getView().getModel().setProperty("/removeMode", true);
+    },
+
+    showAdd: function () {
+      this.getView().getModel().setProperty("/addMode", true);
+      this.getView().getModel().setProperty("/removeMode", false);
+    },
+
+    onDelete: function () {
+      $.ajax({
+        type: "POST",
+        url: "/api/delete/",
+        data: {
+          type: 'Register',
           name: this.getView().getModel().getProperty("/name"),
           id: this.getView().getModel("event").getProperty("/_id"),
           gender: this.gender[this.getView().getModel().getProperty("/gender")]
