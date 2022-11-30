@@ -16,7 +16,8 @@ sap.ui.define([
       var oModel = new JSONModel({gender:0, name:""});
       this.getView().setModel(oModel);
       this.refresh();
-      this.getSplitAppObj().showMaster();
+      this.getView().getModel().setProperty("/mode", "StretchCompressMode");
+
     },
 
     refresh: function () {

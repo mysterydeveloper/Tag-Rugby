@@ -13,6 +13,7 @@ sap.ui.define([
       });
       this.getView().setModel(oModel);
       this.refresh();
+      this.getView().getModel().setProperty("/mode", "StretchCompressMode");
     },
 
     refresh: function () {
