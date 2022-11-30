@@ -68,3 +68,11 @@
 {"name":"2","gender":"Female","id":"t0IqkXkcmxYrxbo3","type":"Register","time":1664989119633,"_id":"zs9B4iNavex3Jq22"}
 {"name":"3","gender":"Female","id":"t0IqkXkcmxYrxbo3","type":"Register","time":1664989119633,"_id":"zs9B4iNavex3Jq23"}
 {"name":"1","gender":"Female","id":"t0IqkXkcmxYrxbo3","type":"Register","time":1664989119633,"_id":"zs9B4iNavex3Jq3X"}
+{"_id":"t0IqkXkcmxYrxbo2","type":"Event","Date":"22/11/2022","State":"Inactive123"}
+{"$$deleted":true,"_id":"t0IqkXkcmxYrxbo3"}
+{"_id":"t0IqkXkcmxYrxbo2","type":"Event","Date":"22/11/2022","State":"Inactive"}
+{"_id":"t0IqkXkcmxYrxbo2","type":"Event","Date":"22/11/2022","State":"Inactive123"}
+{"_id":"t0IqkXkcmxYrxbo2","type":"Event","Date":"22/11/2022","State":"Inactive"}
+{"Date":"test","State":"estet","_id":"4W7ZfGcxo0KKVTnY"}
+{"type":"Event","Date":"tset","State":"ste","_id":"pRNCtmGamxObRNVq"}
+{"$$deleted":true,"_id":"pRNCtmGamxObRNVq"}

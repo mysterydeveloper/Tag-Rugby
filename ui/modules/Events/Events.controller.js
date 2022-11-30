@@ -12,6 +12,11 @@ sap.ui.define([
         editMode: false
       });
       this.getView().setModel(oModel);
+      this.refresh();
+
+    },
+
+    refresh: function () {
       $.ajax({
         type: "POST",
         url: "/api/read/",
@@ -24,7 +29,6 @@ sap.ui.define([
         }.bind(this),
         datatype: "jsonp",
       });
-
     },
 
     onListItemPress: function (oEvent) {
@@ -32,6 +36,8 @@ sap.ui.define([
       var oModel = new JSONModel(data);
       this.getView().setModel(oModel, "event");
       this.getSplitAppObj().toDetail(this.createId("detail"));
+      this.getView().getModel().setProperty("/type", "update")
+
       $.ajax({
         type: "POST",
         url: "/api/read/",
@@ -46,12 +52,12 @@ sap.ui.define([
           });
           let counter = 1;
           oData.forEach(element => {
-            element.number = counter++;
             if (counter > 16) {
               element.inOrOut = "Reserve"
             } else {
               element.inOrOut = "Playing"
             }
+            element.number = counter++;
           });
           var oModel = new JSONModel(oData);
           this.getView().setModel(oModel, "malePlayers");
@@ -72,12 +78,13 @@ sap.ui.define([
           });
           let counter = 1;
           oData.forEach(element => {
-            element.number = counter++;
             if (counter > 16) {
-                element.inOrOut = "Reserve"
-              } else {
-                element.inOrOut = "Playing"
-              }
+              element.inOrOut = "Reserve"
+            } else {
+              element.inOrOut = "Playing"
+            }
+            element.number = counter++;
+
           });
           var oModel = new JSONModel(oData);
           this.getView().setModel(oModel, "femalePlayers");
@@ -98,24 +105,76 @@ sap.ui.define([
       return result;
     },
 
-    grouper: function(oGroup) {
-        return {
-            key: oGroup.oModel.oData[oGroup.sPath.split("/")[1]].inOrOut
-        };
+    grouper: function (oGroup) {
+      return {
+        key: oGroup.oModel.oData[oGroup.sPath.split("/")[1]].inOrOut
+      };
     },
 
-    getGroupHeader: function(oGroup){
-        return new sap.m.GroupHeaderListItem( {
-            title: oGroup.key,
-            upperCase: true
-        });
-    
+    getGroupHeader: function (oGroup) {
+      return new sap.m.GroupHeaderListItem({
+        title: oGroup.key,
+        upperCase: true
+      });
+
     },
 
-    onEditPress: function () {
-      let model = this.getView().getModel();
-      model.editMode = true;
-      this.getView().setModel(model);
+    onEdit: function () {
+      let oldEvent = JSON.parse(JSON.stringify(this.getView().getModel("event").getProperty("/")));
+      this.getView().getModel().setProperty("/oldEvent", oldEvent);
+      this.getView().getModel().setProperty("/editMode", true)
+    },
+
+    onSave: function () {
+        let url = "";
+        if(this.getView().getModel().getProperty("/type") == "update"){
+            url = "/api/update/";
+        }
+        else{
+            url = "/api/create/"
+        }
+      $.ajax({
+        type: "POST",
+        url: url,
+        data: this.getView().getModel("event").getProperty("/"),
+        success: function (oData) {
+          this.refresh();
+        }.bind(this),
+        datatype: "jsonp",
+      });
+      this.getView().getModel().setProperty("/editMode", false)
+    },
+
+    onDelete: function () {
+      $.ajax({
+        type: "POST",
+        url: "/api/delete/",
+        data: this.getView().getModel("event").getProperty("/"),
+        success: function (oData) {
+          this.refresh();
+        }.bind(this),
+        datatype: "jsonp",
+      });
+    },
+
+    onCancel: function () {
+      let oldEvent = JSON.parse(JSON.stringify(this.getView().getModel().getProperty("/oldEvent")));
+      this.getView().getModel("event").setProperty("/", oldEvent);
+      console.log(this.getView().getModel("event").getProperty("/"))
+      console.log(this.getView().getModel().getProperty("/oldEvent"))
+      this.getView().getModel().setProperty("/editMode", false)
+    },
+
+    onAdd: function () {
+      var oModel = new JSONModel({type: "Event"});
+      this.getView().setModel(oModel, "event");
+      this.getSplitAppObj().toDetail(this.createId("detail"));
+      this.getView().getModel().setProperty("/editMode", true)
+      this.getView().getModel().setProperty("/type", "create")
+      var oModel = new JSONModel({});
+      this.getView().setModel(oModel, "malePlayers");
+      var oModel = new JSONModel({});
+      this.getView().setModel(oModel, "femalePlayers");
     }
   });
 

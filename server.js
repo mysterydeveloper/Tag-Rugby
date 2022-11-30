@@ -33,7 +33,8 @@ app.post('/api/create', (req, res) => {
 });
 
 app.post('/api/update', (req, res) => {
-	db.update(req.body, {}, function (err, docs) {
+	console.log(req.body)
+	db.update({_id:req.body["_id"]},req.body, {}, function (err, docs) {
 			console.log(docs);
 			res.json(docs);
 	});
