@@ -14,6 +14,7 @@ sap.ui.define([
       this.getView().setModel(oModel);
       this.refresh();
       this.getSplitAppObj().toMaster(this.createId("master"));
+      this.getSplitAppObj().showMaster();
     },
 
     refresh: function () {

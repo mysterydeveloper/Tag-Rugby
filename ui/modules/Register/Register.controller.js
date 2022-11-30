@@ -16,7 +16,7 @@ sap.ui.define([
       var oModel = new JSONModel({gender:0, name:""});
       this.getView().setModel(oModel);
       this.refresh();
-
+      this.getSplitAppObj().showMaster();
     },
 
     refresh: function () {
@@ -101,7 +101,7 @@ sap.ui.define([
       });
     },
     onPressMasterBack: function () {
-      this.getSplitAppObj().backMaster();
+        this.getSplitAppObj().showMaster();
     },
 
     getSplitAppObj: function () {
