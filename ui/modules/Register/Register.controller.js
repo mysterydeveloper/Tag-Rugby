@@ -43,8 +43,7 @@ sap.ui.define([
     },
 
     onListItemPress: function (oEvent) {
-      this.getView().getModel().setProperty("/mode", "HideMode");
-
+        this.getSplitAppObj().to(this.createId("regdetail"));
       var data = this.getView().getModel("events").oData[oEvent.getSource().oBindingContexts.events.sPath.split("/")[1]];
       var oModel = new JSONModel(data);
       this.getView().setModel(oModel, "event");
@@ -110,7 +109,7 @@ sap.ui.define([
       });
     },
     onPressMasterBack: function () {
-      this.getView().getModel().setProperty("/mode", "StretchCompressMode");
+        this.getSplitAppObj().toMaster(this.createId("regmaster"));
     },
 
     getSplitAppObj: function () {
@@ -164,8 +163,6 @@ sap.ui.define([
     },
 
     onDelete: function () {
-      console.log(this.getView().getModel().getProperty("/number"));
-      console.log(this.getView().getModel(this.gender[this.getView().getModel().getProperty("/numbergender")] + "Players"));
       let data = this.getView().getModel(this.gender[this.getView().getModel().getProperty("/numbergender")] + "Players").oData[this.getView().getModel().getProperty("/number") - 1];
       console.log(data);
       delete data["inOrOut"];
