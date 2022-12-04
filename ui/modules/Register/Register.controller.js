@@ -43,7 +43,7 @@ sap.ui.define([
     },
 
     onListItemPress: function (oEvent) {
-        this.getSplitAppObj().to(this.createId("regdetail"));
+      this.getSplitAppObj().to(this.createId("regdetail"));
       var data = this.getView().getModel("events").oData[oEvent.getSource().oBindingContexts.events.sPath.split("/")[1]];
       var oModel = new JSONModel(data);
       this.getView().setModel(oModel, "event");
@@ -109,7 +109,7 @@ sap.ui.define([
       });
     },
     onPressMasterBack: function () {
-        this.getSplitAppObj().toMaster(this.createId("regmaster"));
+      this.getSplitAppObj().toMaster(this.createId("regmaster"));
     },
 
     getSplitAppObj: function () {

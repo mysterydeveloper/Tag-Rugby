@@ -37,7 +37,7 @@ sap.ui.define([
       this.getView().setModel(oModel, "event");
       this.getSplitAppObj().toDetail(this.createId("detail"));
       this.getView().getModel().setProperty("/type", "update");
-      this.getView().getModel().setProperty("/mode", "HideMode");
+      this.getSplitAppObj().to(this.createId("detail"));
 
       $.ajax({
         type: "POST",
@@ -95,8 +95,7 @@ sap.ui.define([
     },
 
     onPressMasterBack: function () {
-      this.getView().getModel().setProperty("/mode", "StretchCompressMode");
-
+      this.getSplitAppObj().toMaster(this.createId("master"));
     },
 
     getSplitAppObj: function () {
