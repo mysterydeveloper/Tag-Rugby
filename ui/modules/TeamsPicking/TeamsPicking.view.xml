@@ -1,10 +1,33 @@
-<mvc:View controllerName="tag.rugby.ui.modules.Teams.Teams" xmlns="sap.m" xmlns:l="sap.ui.layout"
+<mvc:View controllerName="tag.rugby.ui.modules.TeamsPicking.TeamsPicking" xmlns="sap.m" xmlns:l="sap.ui.layout"
   xmlns:f="sap.ui.layout.form" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core">
   <SplitApp id="SplitAppDemo" initialDetail="detail" mode="{/mode}" initialMaster="master">
     <detailPages>
       <Page id="detail" title="Event" backgroundDesign="Solid" showNavButton="true" navButtonPress=".onPressMasterBack">
         <content>
           <VBox class="sapUiSmallMargin">
+            <f:Form id="FormChange354wideDual">
+              <f:layout>
+                <f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="3" labelSpanM="4" labelSpanS="12"
+                  adjustLabelSpan="false" emptySpanXL="0" emptySpanL="4" emptySpanM="0" emptySpanS="0" columnsXL="2"
+                  columnsL="1" columnsM="1" singleContainerFullSize="false" />
+              </f:layout>
+              <f:formContainers>
+                <f:FormContainer title="Details">
+                  <f:formElements>
+                    <f:FormElement label="Event Date">
+                      <f:fields>
+                        <Input value="{event>/Date}" id="date" enabled="{/editMode}" />
+                      </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="Event Status">
+                      <f:fields>
+                        <Input value="{event>/State}" id="status" enabled="{/editMode}" />
+                      </f:fields>
+                    </f:FormElement>
+                  </f:formElements>
+                </f:FormContainer>
+              </f:formContainers>
+            </f:Form>
             <f:Form id="FormChange354wideDuals" editable="false">
               <f:layout>
                 <f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12"
@@ -144,8 +167,7 @@
       </Page>
     </detailPages>
     <masterPages>
-      <Page id="master" title="Events Available for Team Viewing" backgroundDesign="List"
-        navButtonPress=".onPressMasterBack">
+      <Page id="master" title="Events Available for Team Picking" backgroundDesign="List" navButtonPress=".onPressMasterBack">
         <VBox fitContainer="true">
           <Table id="events" items="{
                               path: 'events>/'

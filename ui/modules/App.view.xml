@@ -21,6 +21,7 @@
                 <tnt:NavigationListItem id="Home" key="Home" select="selectedItem" text="{i18n>Home}" icon="sap-icon://home" />
                 <tnt:NavigationListItem id="Register" key="Register" select="selectedItem" text="{i18n>Register}" icon="sap-icon://add-product" />
                 <tnt:NavigationListItem id="Teams" key="Teams" select="selectedItem" text="{i18n>Teams}" icon="sap-icon://group" />
+                <tnt:NavigationListItem id="TeamsPicking" key="TeamsPicking" select="selectedItem" text="{i18n>TeamsPicking}" icon="sap-icon://group" />
                 <tnt:NavigationListItem id="Rules" key="Rules" select="selectedItem" text="{i18n>Rules}" icon="sap-icon://information" />
                 <tnt:NavigationListItem id="Plays" key="Plays" select="selectedItem" text="{i18n>Plays}" icon="sap-icon://approvals" />
                 <tnt:NavigationListItem id="Players" key="Players" select="selectedItem" text="{i18n>Players}" icon="sap-icon://employee" />

@@ -1,14 +1,1 @@
-{"type":"Event","Date":"sd","State":"asd","_id":"xqGIEzwCYhouoZzK"}
-{"type":"Event","Date":"sd","State":"Active","_id":"xqGIEzwCYhouoZzK"}
-{"type":"Register","time":"1669828875634","name":"Test","id":"xqGIEzwCYhouoZzK","gender":"Male","_id":"7rdxGtcz9ROb9orq"}
-{"$$deleted":true,"_id":"7rdxGtcz9ROb9orq"}
-{"$$deleted":true,"_id":"xqGIEzwCYhouoZzK"}
-{"type":"Event","State":"Active","_id":"OsIKwpHa5Gtosd49"}
-{"type":"Register","time":"1669828909438","name":"test","id":"OsIKwpHa5Gtosd49","gender":"Male","_id":"LQ2KqVeOf7xQi6xt"}
-{"$$deleted":true,"_id":"LQ2KqVeOf7xQi6xt"}
-{"$$deleted":true,"_id":"OsIKwpHa5Gtosd49"}
 {"type":"Event","Date":"1","State":"Active","_id":"YJc0nHmstjEjNNL0"}
-{"type":"Register","time":"1669829115081","name":"Manus","id":"YJc0nHmstjEjNNL0","gender":"Male","_id":"RhOLeXSsy1Rh5jvd"}
-{"$$deleted":true,"_id":"RhOLeXSsy1Rh5jvd"}
-{"type":"Register","time":"1669906002223","name":"MAnus","id":"YJc0nHmstjEjNNL0","gender":"Male","_id":"YzXqpMf1TtjDqdJ2"}
-{"$$deleted":true,"_id":"YzXqpMf1TtjDqdJ2"}

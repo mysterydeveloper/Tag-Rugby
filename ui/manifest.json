@@ -73,6 +73,11 @@
           "name": "Events",
           "pattern": "Events",
           "target": "Events"
+        },
+        {
+          "name": "TeamsPicking",
+          "pattern": "TeamsPicking",
+          "target": "TeamsPicking"
         }
       ],
       "targets": {
@@ -84,6 +89,9 @@
         },
         "Teams": {
           "name": "Teams.Teams"
+        },
+        "TeamsPicking": {
+          "name": "TeamsPicking.TeamsPicking"
         },
         "Rules": {
           "name": "Rules.Rules"
