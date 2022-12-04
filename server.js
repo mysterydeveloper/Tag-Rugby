@@ -12,7 +12,7 @@ app.use(express.static(path.resolve(__dirname, 'ui')));
 // Parse JSON bodies (as sent by API clients)
 app.use(express.json());
 
-var Datastore = require('nedb'), db = new Datastore({ filename: '/etc/secrets/dbfile', autoload: true });
+var Datastore = require('nedb'), db = new Datastore({ filename: '~/etc/secrets/dbfile', autoload: true });
 // db.insert([{ a: 5 }, { a: 42 }], function (err, newDocs) {
 //     console.log(newDocs);
 // });
