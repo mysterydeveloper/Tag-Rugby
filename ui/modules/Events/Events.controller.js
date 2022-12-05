@@ -12,7 +12,6 @@ sap.ui.define([
         editMode: false
       });
       this.getView().setModel(oModel);
-      this.refresh();
       this.getOwnerComponent().getRouter().getRoute("Events").attachMatched(this._onRouteMatched, this);
 
     },

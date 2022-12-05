@@ -83,6 +83,11 @@
           "name": "Login",
           "pattern": "Login/{previousPage}",
           "target": "Login"
+        },
+        {
+          "name": "Tips",
+          "pattern": "Tips",
+          "target": "Tips"
         }
       ],
       "targets": {
@@ -115,6 +120,9 @@
         },
         "Login": {
           "name": "Login.Login"
+        },
+        "Tips": {
+          "name": "Tips.Tips"
         }
       }
     }

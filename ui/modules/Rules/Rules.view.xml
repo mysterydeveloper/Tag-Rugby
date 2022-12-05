@@ -11,12 +11,14 @@
         <customHeader>
 			<Toolbar>
 				<ToolbarSpacer/>
-				<Title text="Rules" level="H2"/>
+				<Title text="Basic Laws for Mixed Social Tag" level="H2"/>
 				<ToolbarSpacer/>
 			</Toolbar>
 		</customHeader>
 		<content>
-			
+            <VBox class="sapUiMediumMargin">
+                <FormattedText htmlText="{/HTML}"/>
+            </VBox>
 		</content>
 	</Page>
 </mvc:View>

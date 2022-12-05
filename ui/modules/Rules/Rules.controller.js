@@ -1,12 +1,16 @@
 sap.ui.define([
   "sap/ui/core/mvc/Controller",
-], function (Controller) {
+  "sap/ui/model/json/JSONModel",
+], function (Controller, JSONModel) {
   "use strict";
 
   return Controller.extend("tag.rugby.ui.modules.Rules.Rules", {
 
     onInit: function () {
-
+        var oModel = new JSONModel({
+            HTML : '<ul> <li ><span>Players on Pitch </span> <ul> <li ><span>7 players on the pitch</span></li> <li ><span>Maximum 4 guys on the field of play - most teams play with 4 guys and 3 girls</span></li> <li ><span style="background-color: transparent;">To start a game, you must have at least 5 players on pitch, of which 1 must be&nbsp;</span><span style="background-color: transparent;">female.&nbsp;</span></li> <li ><span style="background-color: transparent;">You dont need to have 3 females on the pitch at all times</span></li> </ul> </li> <li ><span>Squads&nbsp; </span> <ul> <li ><span>Up to 14 Players Allowed each night</span></li> </ul> </li> <li ><span>Scoring: </span> <ul> <li><span>Boy try = 1pt</span></li> <li><span>Girls try = 3pts</span></li> </ul> </li> <li><span>Roll ball with foot only - not with hand&nbsp;</span></li> <li><span><span >Bonus Box for Female Players Only</span><span ></span></span> <ul > <li><span>If girl scores a try in Bonus Box, it is worth 4 points (3+1)</span></li> <li><span>If a guy scores a try in Bonus Box, it is still only worth 1 point</span></li> </ul> </li> <li><span>Mercy Rule<strong></strong></span> <ul > <li><span>If a team goes 10 points or more in front, the Bonus Box becomes Null and Void to them while they remain 10 points or more in front.</span></li> <li><span>When 10 points + behind, the conceding team restarts play with a tap-kick from the half way line (ie keep possession). They do not have to kick the ball back to the opposition.</span></li> </ul> </li> <li ><span>Tagging&nbsp;</span> <ul> <li ><span>Defending players are permitted to tag attacking players on <span style="text-decoration: underline;">either</span> side of the attackers body, provided the defender does not initiate contact or impede the progress of the attacking player in the process of making the tag.</span></li> </ul> </li> <li ><span>Diving: </span> <ul> <li><span>Players are allowed to dive for tries </span> <ul> <li><span>Ball must be placed on ground first before elbows or knees.&nbsp;</span></li> <li><span>No swallow dives.&nbsp;</span></li> <li><span>No deliberate contact.&nbsp;</span></li> <li><span>Referees will disallow diving if they feel it is dangerous</span></li> </ul> </li> <li><span>A defending player can dive on the ball to secure possession</span></li> <li><span>An attacking player can only dive on the ball to score a try</span></li> </ul> </li> <li ><span>Kicking: </span> <ul> <li><span>You can fly-hack the ball at any stage of a match</span></li> <li><span>You do not need to be wearing any tags to kick the ball from the ground</span></li> </ul> </li> <li ><span>Kick Off </span> <ul> <li ><span>Female only kick off at re-starts</span></li> </ul> </li> <li ><span>Allow Accelerate-Her rule </span> <ul> <li><span>4 girls on pitch = 4 points per Girl Try</span></li> <li><span>5 girls on pitch = 5 point per Girl Try and so on...</span></li> </ul> </li> <li ><span>No Surrendering&nbsp; </span> <ul> <li ><span>An attacker must keep moving - they cannot deliberately stop and present tags to defender.</span></li> </ul> </li> </ul>'
+        });
+        this.getView().setModel(oModel);
     },
   });
 

@@ -66,6 +66,11 @@
                         <Button text="Add" enabled="{= ${/Name}.length>0}" press="showAdd" />
                       </f:fields>
                     </f:FormElement>
+                    <f:FormElement>
+                      <f:fields>
+                        <Button text="Refresh" press="refreshPlayers" />
+                      </f:fields>
+                    </f:FormElement>
                   </f:formElements>
                 </f:FormContainer>
               </f:formContainers>

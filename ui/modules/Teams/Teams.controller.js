@@ -7,18 +7,11 @@ sap.ui.define([
   return Controller.extend("tag.rugby.ui.modules.Teams.Teams", {
 
     onInit: function () {
-      
       this.getOwnerComponent().getRouter().getRoute("Teams").attachMatched(this._onRouteMatched, this);
-
     },
 
-    _onRouteMatched : function (oEvent) {
-        if(jQuery.sap.storage.get("token") !== true ){
-            this.getOwnerComponent().getRouter().navTo("Login", {previousPage: "Teams"});
-        } else{
-            this.refresh();
-        }
-        
+    _onRouteMatched: function (oEvent) {
+      this.refresh();
     },
 
     refresh: function () {

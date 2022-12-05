@@ -1,21 +1,21 @@
 <mvc:View
-	controllerName="tag.rugby.ui.modules.Home.Home"
+	controllerName="tag.rugby.ui.modules.Tips.Tips"
     xmlns="sap.m"
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns:core="sap.ui.core"
 	height="100%">
 
 	<Page
-		title="Page"
+		title="Rules"
 		class="sapUiContentPadding" >
-		<customHeader>
+        <customHeader>
 			<Toolbar>
 				<ToolbarSpacer/>
-				<Title text="Home" level="H2"/>
+				<Title text="Tips for playing TAG Rugby" level="H2"/>
 				<ToolbarSpacer/>
 			</Toolbar>
 		</customHeader>
-        <content>
+		<content>
             <VBox class="sapUiMediumMargin">
                 <FormattedText htmlText="{/HTML}"/>
             </VBox>

@@ -1,40 +1,55 @@
-<mvc:View
-	controllerName="tag.rugby.ui.modules.App"
-    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
-    xmlns="sap.m"
-    xmlns:tnt="sap.tnt" height="100%">
-    <App id="idAppControl">
-      <tnt:ToolPage id="idShellToolPage" sideExpanded="true">
-        <tnt:header>
-          <tnt:ToolHeader class="sapUiSizeCompact" width="100%">
-            <Button id="idNavItemButtonCollapsExpand" type="Transparent" icon="sap-icon://menu2" press="onSideNavigationExpandedToggle"/>
-            <ToolbarSpacer/>
-            <Image src="assets/images/logo.png" width="70%" height="100%" />
-            <ToolbarSpacer/>
-          </tnt:ToolHeader>
-        </tnt:header>
-  
-        <tnt:sideContent>
-          <tnt:SideNavigation id="idSideNavigation" itemSelect="onSideNavigationItemSelect">
-            <tnt:item>
-              <tnt:NavigationList>
-                <tnt:NavigationListItem id="Home" key="Home" select="selectedItem" text="{i18n>Home}" icon="sap-icon://home" />
-                <tnt:NavigationListItem id="Register" key="Register" select="selectedItem" text="{i18n>Register}" icon="sap-icon://add-product" />
-                <tnt:NavigationListItem id="Teams" key="Teams" select="selectedItem" text="{i18n>Teams}" icon="sap-icon://group" />
-                <tnt:NavigationListItem id="TeamsPicking" key="TeamsPicking" select="selectedItem" text="{i18n>TeamsPicking}" icon="sap-icon://group" />
-                <tnt:NavigationListItem id="Rules" key="Rules" select="selectedItem" text="{i18n>Rules}" icon="sap-icon://information" />
-                <tnt:NavigationListItem id="Plays" key="Plays" select="selectedItem" text="{i18n>Plays}" icon="sap-icon://approvals" />
-                <tnt:NavigationListItem id="Players" key="Players" select="selectedItem" text="{i18n>Players}" icon="sap-icon://employee" />
-                <tnt:NavigationListItem id="Events" key="Events" select="selectedItem" text="{i18n>Events}" icon="sap-icon://keyboard-and-mouse" />
-                <tnt:NavigationListItem id="Admin" key="Admin" select="selectedItem" text="{i18n>Admin}" icon="sap-icon://key-user-settings" />
-              </tnt:NavigationList>
-            </tnt:item>
-          </tnt:SideNavigation>
-        </tnt:sideContent>
-  
-        <tnt:mainContents>
-          <NavContainer id="rootControl" class="sapUiSizeCompact" busyIndicatorDelay="50"/>
-        </tnt:mainContents>
-      </tnt:ToolPage>
-    </App>
-  </mvc:View>
+<mvc:View controllerName="tag.rugby.ui.modules.App" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m"
+  xmlns:tnt="sap.tnt" height="100%">
+  <App id="idAppControl">
+    <tnt:ToolPage id="idShellToolPage" sideExpanded="true">
+      <tnt:header>
+        <tnt:ToolHeader class="sapUiSizeCompact" width="100%">
+          <Button id="idNavItemButtonCollapsExpand" type="Transparent" icon="sap-icon://menu2"
+            press="onSideNavigationExpandedToggle" />
+          <ToolbarSpacer />
+          <Image src="assets/images/logo.png" width="70%" height="100%" />
+          <ToolbarSpacer />
+        </tnt:ToolHeader>
+      </tnt:header>
+
+      <tnt:sideContent>
+        <tnt:SideNavigation id="idSideNavigation" itemSelect="onSideNavigationItemSelect">
+          <tnt:item>
+            <tnt:NavigationList>
+              <tnt:NavigationListItem id="Home" key="Home" select="selectedItem" text="{i18n>Home}"
+                icon="sap-icon://home" />
+              <tnt:NavigationListItem id="PlayerPortal" select="selectedItem" text="{i18n>PlayerPortal}"
+                icon="sap-icon://home">
+                <tnt:NavigationListItem id="Register" key="Register" select="selectedItem" text="{i18n>Register}"
+                  icon="sap-icon://add-product" />
+                <tnt:NavigationListItem id="Teams" key="Teams" select="selectedItem" text="{i18n>Teams}"
+                  icon="sap-icon://group" />
+                <tnt:NavigationListItem id="Rules" key="Rules" select="selectedItem" text="{i18n>Rules}"
+                  icon="sap-icon://information" />
+                <tnt:NavigationListItem id="Tips" key="Tips" select="selectedItem" text="{i18n>Tips}"
+                  icon="sap-icon://lightbulb" />
+                <tnt:NavigationListItem id="Plays" key="Plays" select="selectedItem" text="{i18n>Plays}"
+                  icon="sap-icon://approvals" />
+              </tnt:NavigationListItem>
+              <tnt:NavigationListItem id="AdminPortal" select="selectedItem" text="{i18n>AdminPortal}"
+                icon="sap-icon://key-user-settings">
+                <tnt:NavigationListItem id="TeamsPicking" key="TeamsPicking" select="selectedItem"
+                  text="{i18n>TeamsPicking}" icon="sap-icon://appointment" />
+                <tnt:NavigationListItem id="Players" key="Players" select="selectedItem" text="{i18n>Players}"
+                  icon="sap-icon://employee" />
+                <tnt:NavigationListItem id="Events" key="Events" select="selectedItem" text="{i18n>Events}"
+                  icon="sap-icon://keyboard-and-mouse" />
+                <tnt:NavigationListItem id="Admin" key="Admin" select="selectedItem" text="{i18n>Admin}"
+                  icon="sap-icon://key-user-settings" />
+              </tnt:NavigationListItem>
+            </tnt:NavigationList>
+          </tnt:item>
+        </tnt:SideNavigation>
+      </tnt:sideContent>
+
+      <tnt:mainContents>
+        <NavContainer id="rootControl" class="sapUiSizeCompact" busyIndicatorDelay="50" />
+      </tnt:mainContents>
+    </tnt:ToolPage>
+  </App>
+</mvc:View>

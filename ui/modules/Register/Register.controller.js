@@ -22,8 +22,13 @@ sap.ui.define([
         removeMode: false
       });
       this.getView().setModel(oModel);
+
+      this.getOwnerComponent().getRouter().getRoute("Register").attachMatched(this._onRouteMatched, this);
+
+    },
+
+    _onRouteMatched: function (oEvent) {
       this.refresh();
-      this.getView().getModel().setProperty("/mode", "StretchCompressMode");
     },
 
     refresh: function () {
@@ -50,6 +55,10 @@ sap.ui.define([
       this.getSplitAppObj().toDetail(this.createId("detail"));
       this.getView().getModel().setProperty("/type", "update")
       this.refreshMaleFemaleTables(data._id)
+    },
+
+    refreshPlayers: function () {
+      this.refreshMaleFemaleTables(this.getView().getModel("event").getProperty("/_id"))
     },
 
     refreshMaleFemaleTables: function (_id) {
@@ -146,6 +155,7 @@ sap.ui.define([
           gender: this.gender[this.getView().getModel().getProperty("/gender")]
         },
         success: function (oData) {
+          this.getView().getModel().setProperty("/name", "");
           this.refreshMaleFemaleTables(this.getView().getModel("event").getProperty("/_id"))
         }.bind(this),
         datatype: "jsonp",

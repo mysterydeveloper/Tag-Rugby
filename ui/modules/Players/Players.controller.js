@@ -7,7 +7,6 @@ sap.ui.define([
 
     onInit: function () {
         this.getOwnerComponent().getRouter().getRoute("Players").attachMatched(this._onRouteMatched, this);
-
     },
 
     _onRouteMatched: function (oEvent) {
