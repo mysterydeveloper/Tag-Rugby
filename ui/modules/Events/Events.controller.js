@@ -171,8 +171,6 @@ sap.ui.define([
     onCancel: function () {
       let oldEvent = JSON.parse(JSON.stringify(this.getView().getModel().getProperty("/oldEvent")));
       this.getView().getModel("event").setProperty("/", oldEvent);
-      console.log(this.getView().getModel("event").getProperty("/"))
-      console.log(this.getView().getModel().getProperty("/oldEvent"))
       this.getView().getModel().setProperty("/editMode", false)
     },
 

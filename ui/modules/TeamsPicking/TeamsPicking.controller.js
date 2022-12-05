@@ -22,6 +22,15 @@ sap.ui.define([
       }
     },
 
+    onListItemPress: function (oEvent) {
+      var data = this.getView().getModel("events").oData[oEvent.getSource().oBindingContexts.events.sPath.split("/")[1]];
+      var oModel = new JSONModel(data);
+      this.getView().setModel(oModel, "event");
+      this.getSplitAppObj().toDetail(this.createId("detail"));
+      this.getSplitAppObj().to(this.createId("detail"));
+
+    },
+
 
     refresh: function () {
       $.ajax({
@@ -32,7 +41,6 @@ sap.ui.define([
           State: 'Active'
         },
         success: function (oData) {
-          console.log(oData);
           var oModel = new JSONModel(oData);
           this.getView().setModel(oModel, "events");
         }.bind(this),

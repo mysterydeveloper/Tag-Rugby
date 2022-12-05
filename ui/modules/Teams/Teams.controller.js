@@ -35,7 +35,6 @@ sap.ui.define([
       var oModel = new JSONModel(data);
       this.getView().setModel(oModel, "event");
       this.getSplitAppObj().toDetail(this.createId("detail"));
-      this.getView().getModel().setProperty("/type", "update");
       this.getSplitAppObj().to(this.createId("detail"));
 
     },

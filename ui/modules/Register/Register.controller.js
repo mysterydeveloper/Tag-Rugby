@@ -53,7 +53,6 @@ sap.ui.define([
       var oModel = new JSONModel(data);
       this.getView().setModel(oModel, "event");
       this.getSplitAppObj().toDetail(this.createId("detail"));
-      this.getView().getModel().setProperty("/type", "update")
       this.refreshMaleFemaleTables(data._id)
     },
 
@@ -103,7 +102,7 @@ sap.ui.define([
           });
           let counter = 1;
           oData.forEach(element => {
-            if (counter > 16) {
+            if (counter > 12) {
               element.inOrOut = "Reserve"
             } else {
               element.inOrOut = "Playing"
