@@ -78,6 +78,11 @@
           "name": "TeamsPicking",
           "pattern": "TeamsPicking",
           "target": "TeamsPicking"
+        },
+        {
+          "name": "Login",
+          "pattern": "Login/{previousPage}",
+          "target": "Login"
         }
       ],
       "targets": {
@@ -107,6 +112,9 @@
         },
         "Events": {
           "name": "Events.Events"
+        },
+        "Login": {
+          "name": "Login.Login"
         }
       }
     }

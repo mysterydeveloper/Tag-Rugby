@@ -13,6 +13,19 @@ sap.ui.define([
       });
       this.getView().setModel(oModel);
       this.refresh();
+      this.getOwnerComponent().getRouter().getRoute("Events").attachMatched(this._onRouteMatched, this);
+
+    },
+
+    _onRouteMatched: function (oEvent) {
+      if (jQuery.sap.storage.get("token") !== true) {
+        this.getOwnerComponent().getRouter().navTo("Login", {
+          previousPage: "Events"
+        });
+      } else {
+        this.refresh();
+
+      }
     },
 
     refresh: function () {

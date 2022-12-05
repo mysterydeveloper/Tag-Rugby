@@ -1,0 +1,33 @@
+<mvc:View controllerName="tag.rugby.ui.modules.Login.Login" xmlns="sap.m" xmlns:l="sap.ui.layout"
+  xmlns:f="sap.ui.layout.form" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core">
+      <Page id="detail" title="Login" backgroundDesign="Solid">
+        <content>
+          <VBox class="sapUiSmallMargin">
+            <f:Form id="FormChange354wideDual">
+              <f:layout>
+                <f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="3" labelSpanM="4" labelSpanS="12"
+                  adjustLabelSpan="false" emptySpanXL="0" emptySpanL="4" emptySpanM="0" emptySpanS="0" columnsXL="2"
+                  columnsL="1" columnsM="1" singleContainerFullSize="false" />
+              </f:layout>
+              <f:formContainers>
+                <f:FormContainer >
+                  <f:formElements>
+                    <f:FormElement label="Token">
+                      <f:fields>
+                        <Input 	valueState="{/valueState}" valueStateText="{/valueStateText}" value="{/login}" id="login" />
+                      </f:fields>
+                    </f:FormElement>
+                  </f:formElements>
+                </f:FormContainer>
+              </f:formContainers>
+            </f:Form>
+          </VBox>
+        </content>
+        <footer>
+          <Toolbar>
+            <ToolbarSpacer />
+            <Button text="Login" press="Login" />
+          </Toolbar>
+        </footer>
+      </Page>
+</mvc:View>

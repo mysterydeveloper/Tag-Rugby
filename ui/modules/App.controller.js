@@ -16,11 +16,8 @@ sap.ui.define([
   return Controller.extend("tag.rugby.ui.modules.App", {
 
     onInit: function () {
-      // set explored app's demo model on this sample
-      var oJSONModel = this.initSampleDataModel();
-      var oView = this.getView();
-      oView.setModel(oJSONModel);
       this._oShellToolPage = this.getView().byId("idShellToolPage");
+      jQuery.sap.storage.remove("token", true);
     },
 
     onSideNavigationExpandedToggle: function () {
@@ -31,12 +28,6 @@ sap.ui.define([
         console.log(oEvent.getSource().mProperties.key);
         var oRouter = this.getOwnerComponent().getRouter();
         oRouter.navTo(oEvent.getSource().mProperties.key);
-    },
-
-    initSampleDataModel: function () {
-
-
-    
     },
 
   });

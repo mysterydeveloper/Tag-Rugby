@@ -12,7 +12,7 @@ app.use(express.static(path.resolve(__dirname, 'ui')));
 // Parse JSON bodies (as sent by API clients)
 app.use(express.json());
 
-var Datastore = require('nedb'), db = new Datastore({ filename: '~/etc/secrets/dbfile', autoload: true });
+var Datastore = require('nedb'), db = new Datastore({ filename: 'db/dbfile', autoload: true });
 // db.insert([{ a: 5 }, { a: 42 }], function (err, newDocs) {
 //     console.log(newDocs);
 // });
@@ -45,6 +45,15 @@ app.post('/api/delete', (req, res) => {
 		console.log(numRemoved);
 		res.json(numRemoved);
 	});
+});
+
+app.post('/api/login', (req, res) => {
+	if(req.body.login == "adminToken123"){
+        res.send({login:true})
+    }
+    else{
+        res.send({login:false})
+    }
 });
 
 app.listen(port, () => {

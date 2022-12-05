@@ -132,15 +132,6 @@
             </f:Form>
           </VBox>
         </content>
-        <footer>
-          <Toolbar>
-            <ToolbarSpacer />
-            <Button text="Edit" visible="{= !${/editMode}}" press="onEdit" />
-            <Button text="Delete" visible="{= !${/editMode}}" press="onDelete" />
-            <Button text="Save" visible="{/editMode}" press="onSave" />
-            <Button text="Cancel" visible="{/editMode}" press="onCancel" />
-          </Toolbar>
-        </footer>
       </Page>
     </detailPages>
     <masterPages>

@@ -7,9 +7,21 @@ sap.ui.define([
   return Controller.extend("tag.rugby.ui.modules.TeamsPicking.TeamsPicking", {
 
     onInit: function () {
-        
-      this.refresh();
+
+      this.getOwnerComponent().getRouter().getRoute("TeamsPicking").attachMatched(this._onRouteMatched, this);
+
     },
+
+    _onRouteMatched: function (oEvent) {
+      if (jQuery.sap.storage.get("token") !== true) {
+        this.getOwnerComponent().getRouter().navTo("Login", {
+          previousPage: "Teams"
+        });
+      } else {
+        this.refresh();
+      }
+    },
+
 
     refresh: function () {
       $.ajax({
@@ -20,13 +32,15 @@ sap.ui.define([
           State: 'Active'
         },
         success: function (oData) {
-            console.log(oData);
+          console.log(oData);
           var oModel = new JSONModel(oData);
           this.getView().setModel(oModel, "events");
         }.bind(this),
         datatype: "jsonp",
       });
     },
+
+
   });
 
 });
