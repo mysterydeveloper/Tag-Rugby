@@ -17,7 +17,7 @@ sap.ui.define([
 
     onInit: function () {
       this._oShellToolPage = this.getView().byId("idShellToolPage");
-      jQuery.sap.storage.remove("token", true);
+    //   jQuery.sap.storage.remove("token", true);
     },
 
     onSideNavigationExpandedToggle: function () {
@@ -25,7 +25,7 @@ sap.ui.define([
     },
 
     selectedItem: function(oEvent) {
-        console.log(oEvent.getSource().mProperties.key);
+        this.onSideNavigationExpandedToggle()
         var oRouter = this.getOwnerComponent().getRouter();
         oRouter.navTo(oEvent.getSource().mProperties.key);
     },

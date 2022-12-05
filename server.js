@@ -12,48 +12,60 @@ app.use(express.static(path.resolve(__dirname, 'ui')));
 // Parse JSON bodies (as sent by API clients)
 app.use(express.json());
 
-var Datastore = require('nedb'), db = new Datastore({ filename: 'db/dbfile', autoload: true });
-// db.insert([{ a: 5 }, { a: 42 }], function (err, newDocs) {
-//     console.log(newDocs);
-// });
+var Datastore = require('nedb'),
+  db = new Datastore({
+    filename: 'db/dbfile',
+    autoload: true
+  });
 
 app.post('/api/read', (req, res) => {
-	console.log(req.body)
-
   db.find(req.body, function (err, docs) {
     res.json(docs);
   });
 });
 
 app.post('/api/create', (req, res) => {
-	console.log(req.body)
-  db.insert(req.body, function (err, newDocs) {
-    res.json(newDocs);
-  });
+  if (Array.isArray(req.body)) {
+    for (let i = 0; i < req.body.length; i++) {
+      const element = req.body[i];
+      db.insert(element, function (err, newDocs) {
+      });
+    }
+    res.send(true)
+  }
+  else{
+    db.insert(req.body, function (err, newDocs) {
+        res.json(newDocs);
+    });
+    }
 });
 
 app.post('/api/update', (req, res) => {
-	console.log(req.body)
-	db.update({_id:req.body["_id"]},req.body, {}, function (err, docs) {
-			console.log(docs);
-			res.json(docs);
-	});
+  db.update({
+    _id: req.body["_id"]
+  }, req.body, {}, function (err, docs) {
+    res.json(docs);
+  });
 });
 
 app.post('/api/delete', (req, res) => {
-	db.remove(req.body, {multi: true}, function (err, numRemoved) {
-		console.log(numRemoved);
-		res.json(numRemoved);
-	});
+  db.remove(req.body, {
+    multi: true
+  }, function (err, numRemoved) {
+    res.json(numRemoved);
+  });
 });
 
 app.post('/api/login', (req, res) => {
-	if(req.body.login == "adminToken123"){
-        res.send({login:true})
-    }
-    else{
-        res.send({login:false})
-    }
+  if (req.body.login == "adminToken123") {
+    res.send({
+      login: true
+    })
+  } else {
+    res.send({
+      login: false
+    })
+  }
 });
 
 app.listen(port, () => {

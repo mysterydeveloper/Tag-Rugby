@@ -28,7 +28,28 @@ sap.ui.define([
       this.getView().setModel(oModel, "event");
       this.getSplitAppObj().toDetail(this.createId("detail"));
       this.getSplitAppObj().to(this.createId("detail"));
+      this.refreshDetailTable("team1");
+      this.refreshDetailTable("team2");
+      this.refreshDetailTable("team3");
+      this.refreshDetailTable("team4");
 
+    },
+
+    refreshDetailTable: function(teamID){
+        $.ajax({
+            type: "POST",
+            url: "/api/read/",
+            data: {
+              type: 'Register',
+              Team: teamID,
+              id: _id
+            },
+            success: function (oData) {
+              var oModel = new JSONModel(oData);
+              this.getView().setModel(oModel, teamID);
+            }.bind(this),
+            datatype: "jsonp",
+          });
     },
 
 

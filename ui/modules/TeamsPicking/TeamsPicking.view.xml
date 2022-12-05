@@ -12,11 +12,15 @@
                   columnsL="1" columnsM="1" singleContainerFullSize="false" />
               </f:layout>
               <f:formContainers>
-                <f:FormContainer title="Details">
+                <f:FormContainer title="Sort Players">
                   <f:formElements>
                     <f:FormElement label="Event Date">
                       <f:fields>
-                        <Input value="{event>/Date}" id="date" enabled="{/editMode}" />
+                        <Select forceSelection="false" selectedKey="{/SelectedPlayer}" items="{
+                            path: '/allPlayers'
+                        }">
+                          <core:Item key="{_id}" text="{name}" />
+                        </Select>
                       </f:fields>
                     </f:FormElement>
                     <f:FormElement label="Event Status">
@@ -37,7 +41,7 @@
               <f:formContainers>
                 <f:FormContainer>
                   <f:formElements>
-                    <f:FormElement label="Team 1">
+                    <f:FormElement label="Team 1 Pink">
                       <f:fields>
                         <VBox fitContainer="true">
                           <Table id="team1" items="{path: 'team1>/'}" class="sapFDynamicPageAlignContent" width="auto">
@@ -66,7 +70,7 @@
 
                 <f:FormContainer>
                   <f:formElements>
-                    <f:FormElement label="Team 2">
+                    <f:FormElement label="Team 2 Blue">
                       <f:fields>
                         <VBox fitContainer="true">
                           <Table id="team2" items="{path: 'team2>/'}" class="sapFDynamicPageAlignContent" width="auto">
@@ -94,63 +98,63 @@
                 </f:FormContainer>
 
                 <f:FormContainer>
-                    <f:formElements>
-                      <f:FormElement label="Team 3">
-                        <f:fields>
-                          <VBox fitContainer="true">
-                            <Table id="team3" items="{path: 'team3>/'}" class="sapFDynamicPageAlignContent" width="auto">
-                              <columns>
-                                <Column width="12em">
-                                  <Text text="#" />
-                                </Column>
-                                <Column hAlign="End">
-                                  <Text text="Name" />
-                                </Column>
-                              </columns>
-                              <items>
-                                <ColumnListItem type="Active">
-                                  <cells>
-                                    <ObjectIdentifier title="{team3>number}" />
-                                    <ObjectIdentifier title="{team3>name}" />
-                                  </cells>
-                                </ColumnListItem>
-                              </items>
-                            </Table>
-                          </VBox>
-                        </f:fields>
-                      </f:FormElement>
-                    </f:formElements>
-                  </f:FormContainer>
-  
-                  <f:FormContainer>
-                    <f:formElements>
-                      <f:FormElement label="Team 4">
-                        <f:fields>
-                          <VBox fitContainer="true">
-                            <Table id="team4" items="{path: 'team4>/'}" class="sapFDynamicPageAlignContent" width="auto">
-                              <columns>
-                                <Column width="12em">
-                                  <Text text="#" />
-                                </Column>
-                                <Column hAlign="End">
-                                  <Text text="Name" />
-                                </Column>
-                              </columns>
-                              <items>
-                                <ColumnListItem type="Active">
-                                  <cells>
-                                    <ObjectIdentifier title="{team4>number}" />
-                                    <ObjectIdentifier title="{team4>name}" />
-                                  </cells>
-                                </ColumnListItem>
-                              </items>
-                            </Table>
-                          </VBox>
-                        </f:fields>
-                      </f:FormElement>
-                    </f:formElements>
-                  </f:FormContainer>
-  
+                  <f:formElements>
+                    <f:FormElement label="Team 3 Yellow">
+                      <f:fields>
+                        <VBox fitContainer="true">
+                          <Table id="team3" items="{path: 'team3>/'}" class="sapFDynamicPageAlignContent" width="auto">
+                            <columns>
+                              <Column width="12em">
+                                <Text text="#" />
+                              </Column>
+                              <Column hAlign="End">
+                                <Text text="Name" />
+                              </Column>
+                            </columns>
+                            <items>
+                              <ColumnListItem type="Active">
+                                <cells>
+                                  <ObjectIdentifier title="{team3>number}" />
+                                  <ObjectIdentifier title="{team3>name}" />
+                                </cells>
+                              </ColumnListItem>
+                            </items>
+                          </Table>
+                        </VBox>
+                      </f:fields>
+                    </f:FormElement>
+                  </f:formElements>
+                </f:FormContainer>
+
+                <f:FormContainer>
+                  <f:formElements>
+                    <f:FormElement label="Team 4 Green">
+                      <f:fields>
+                        <VBox fitContainer="true">
+                          <Table id="team4" items="{path: 'team4>/'}" class="sapFDynamicPageAlignContent" width="auto">
+                            <columns>
+                              <Column width="12em">
+                                <Text text="#" />
+                              </Column>
+                              <Column hAlign="End">
+                                <Text text="Name" />
+                              </Column>
+                            </columns>
+                            <items>
+                              <ColumnListItem type="Active">
+                                <cells>
+                                  <ObjectIdentifier title="{team4>number}" />
+                                  <ObjectIdentifier title="{team4>name}" />
+                                </cells>
+                              </ColumnListItem>
+                            </items>
+                          </Table>
+                        </VBox>
+                      </f:fields>
+                    </f:FormElement>
+                  </f:formElements>
+                </f:FormContainer>
+
               </f:formContainers>
             </f:Form>
           </VBox>
@@ -158,7 +162,8 @@
       </Page>
     </detailPages>
     <masterPages>
-      <Page id="master" title="Events Available for Team Picking" backgroundDesign="List" navButtonPress=".onPressMasterBack">
+      <Page id="master" title="Events Available for Team Picking" backgroundDesign="List"
+        navButtonPress=".onPressMasterBack">
         <VBox fitContainer="true">
           <Table id="events" items="{
                               path: 'events>/'
