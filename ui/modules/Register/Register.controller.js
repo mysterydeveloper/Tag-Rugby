@@ -2,7 +2,8 @@ sap.ui.define([
   "sap/ui/core/mvc/Controller",
   "sap/ui/model/json/JSONModel",
   'sap/ui/model/Sorter',
-], function (Controller, JSONModel, Sorter) {
+  'sap/ui/core/BusyIndicator'
+], function (Controller, JSONModel, Sorter, BusyIndicator) {
   "use strict";
 
   return Controller.extend("tag.rugby.ui.modules.Register.Register", {
@@ -32,6 +33,7 @@ sap.ui.define([
     },
 
     refresh: function () {
+      BusyIndicator.show(0);
       $.ajax({
         type: "POST",
         url: "/api/read/",
@@ -42,6 +44,7 @@ sap.ui.define([
         success: function (oData) {
           var oModel = new JSONModel(oData);
           this.getView().setModel(oModel, "events");
+          BusyIndicator.hide();
         }.bind(this),
         datatype: "jsonp",
       });
@@ -63,6 +66,7 @@ sap.ui.define([
 
     refreshMaleFemaleTables: function (eventId) {
       console.log(eventId);  
+      BusyIndicator.show(0);
       $.ajax({
         type: "POST",
         url: "/api/read/",
@@ -86,6 +90,7 @@ sap.ui.define([
           });
           var oModel = new JSONModel(oData);
           this.getView().setModel(oModel, "MalePlayers");
+          BusyIndicator.hide();
         }.bind(this),
         datatype: "jsonp",
       });
@@ -144,6 +149,7 @@ sap.ui.define([
     },
 
     onAdd: function () {
+        BusyIndicator.show(0);
       $.ajax({
         type: "POST",
         url: "/api/create/",
@@ -157,6 +163,7 @@ sap.ui.define([
         success: function (oData) {
           this.getView().getModel().setProperty("/name", "");
           this.refreshMaleFemaleTables(this.getView().getModel("event").getProperty("/Id"))
+          BusyIndicator.hide();
         }.bind(this),
         datatype: "jsonp",
       });
@@ -173,6 +180,7 @@ sap.ui.define([
     },
 
     onDelete: function () {
+        BusyIndicator.show(0);
       let data = this.getView().getModel(this.gender[this.getView().getModel().getProperty("/numbergender")] + "Players").oData[this.getView().getModel().getProperty("/number") - 1];
       console.log(data);
       data.type= "Register";
@@ -184,6 +192,7 @@ sap.ui.define([
         data: data,
         success: function (oData) {
           this.refreshMaleFemaleTables(this.getView().getModel("event").getProperty("/Id"))
+          BusyIndicator.hide();
         }.bind(this),
         datatype: "jsonp",
       });
