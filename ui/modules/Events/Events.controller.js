@@ -44,6 +44,7 @@ sap.ui.define([
 
     onListItemPress: function (oEvent) {
       var data = this.getView().getModel("events").oData[oEvent.getSource().oBindingContexts.events.sPath.split("/")[1]];
+      data.type = "Event";
       var oModel = new JSONModel(data);
       this.getView().setModel(oModel, "event");
       this.getSplitAppObj().toDetail(this.createId("detail"));
@@ -56,7 +57,7 @@ sap.ui.define([
         data: {
           type: 'Register',
           gender: "Male",
-          id: data["_id"]
+          eventId: data["Id"]
         },
         success: function (oData) {
           oData.sort(function (a, b) {
@@ -82,7 +83,7 @@ sap.ui.define([
         data: {
           type: 'Register',
           gender: "Female",
-          id: data["_id"]
+          eventId: data["Id"]
         },
         success: function (oData) {
           oData.sort(function (a, b) {

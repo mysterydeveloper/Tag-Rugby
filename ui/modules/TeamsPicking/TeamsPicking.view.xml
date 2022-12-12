@@ -19,7 +19,7 @@
                         <Select forceSelection="false" selectedKey="{/SelectedPlayer}" items="{
                             path: '/allPlayers'
                         }">
-                          <core:Item key="{_id}" text="{name}" />
+                          <core:Item key="{eventId}" text="{name}" />
                         </Select>
                       </f:fields>
                     </f:FormElement>
@@ -177,7 +177,7 @@
               </Column>
             </columns>
             <items>
-              <ColumnListItem type="Navigation" press=".onListItemPress" key="{events>_id}">
+              <ColumnListItem type="Navigation" press=".onListItemPress" key="{events>eventId}">
                 <cells>
                   <ObjectIdentifier title="{events>Date}" />
                   <ObjectIdentifier title="{events>State}" />

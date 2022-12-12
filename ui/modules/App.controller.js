@@ -25,7 +25,6 @@ sap.ui.define([
     },
 
     selectedItem: function(oEvent) {
-        this.onSideNavigationExpandedToggle()
         var oRouter = this.getOwnerComponent().getRouter();
         oRouter.navTo(oEvent.getSource().mProperties.key);
     },

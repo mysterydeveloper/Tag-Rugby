@@ -32,24 +32,49 @@ sap.ui.define([
       this.refreshDetailTable("team2");
       this.refreshDetailTable("team3");
       this.refreshDetailTable("team4");
+      $.ajax({
+        type: "POST",
+        url: "/api/read/",
+        data: {
+          type: 'Register',
+          id: eventId
+        },
+        success: function (oData) {
+          oData.sort(function (a, b) {
+            return a.time - b.time;
+          });
+          let counter = 1;
+          oData.forEach(element => {
+            if (counter > 12) {
+              element.inOrOut = "Reserve"
+            } else {
+            }
+            element.number = counter++;
+
+          });
+          var oModel = new JSONModel(oData);
+          this.getView().setModel(oModel, teamID);
+        }.bind(this),
+        datatype: "jsonp",
+      });
 
     },
 
-    refreshDetailTable: function(teamID){
-        $.ajax({
-            type: "POST",
-            url: "/api/read/",
-            data: {
-              type: 'Register',
-              Team: teamID,
-              id: _id
-            },
-            success: function (oData) {
-              var oModel = new JSONModel(oData);
-              this.getView().setModel(oModel, teamID);
-            }.bind(this),
-            datatype: "jsonp",
-          });
+    refreshDetailTable: function (teamID) {
+      $.ajax({
+        type: "POST",
+        url: "/api/read/",
+        data: {
+          type: 'Register',
+          Team: teamID,
+          id: eventId
+        },
+        success: function (oData) {
+          var oModel = new JSONModel(oData);
+          this.getView().setModel(oModel, teamID);
+        }.bind(this),
+        datatype: "jsonp",
+      });
     },
 
 

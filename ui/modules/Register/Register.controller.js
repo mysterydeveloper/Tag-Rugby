@@ -51,24 +51,25 @@ sap.ui.define([
       this.getSplitAppObj().to(this.createId("regdetail"));
       var data = this.getView().getModel("events").oData[oEvent.getSource().oBindingContexts.events.sPath.split("/")[1]];
       var oModel = new JSONModel(data);
+      console.log(data);
       this.getView().setModel(oModel, "event");
       this.getSplitAppObj().toDetail(this.createId("detail"));
-      this.refreshMaleFemaleTables(data._id)
+      this.refreshMaleFemaleTables(data.Id)
     },
 
     refreshPlayers: function () {
-      this.refreshMaleFemaleTables(this.getView().getModel("event").getProperty("/_id"))
+      this.refreshMaleFemaleTables(this.getView().getModel("event").getProperty("/Id"))
     },
 
-    refreshMaleFemaleTables: function (_id) {
-
+    refreshMaleFemaleTables: function (eventId) {
+      console.log(eventId);  
       $.ajax({
         type: "POST",
         url: "/api/read/",
         data: {
           type: 'Register',
           gender: "Male",
-          id: _id
+          eventId: eventId
         },
         success: function (oData) {
           oData.sort(function (a, b) {
@@ -94,7 +95,7 @@ sap.ui.define([
         data: {
           type: 'Register',
           gender: "Female",
-          id: _id
+          eventId: eventId
         },
         success: function (oData) {
           oData.sort(function (a, b) {
@@ -150,12 +151,12 @@ sap.ui.define([
           type: 'Register',
           time: new Date().getTime(),
           name: this.getView().getModel().getProperty("/name"),
-          id: this.getView().getModel("event").getProperty("/_id"),
+          eventId: this.getView().getModel("event").getProperty("/Id"),
           gender: this.gender[this.getView().getModel().getProperty("/gender")]
         },
         success: function (oData) {
           this.getView().getModel().setProperty("/name", "");
-          this.refreshMaleFemaleTables(this.getView().getModel("event").getProperty("/_id"))
+          this.refreshMaleFemaleTables(this.getView().getModel("event").getProperty("/Id"))
         }.bind(this),
         datatype: "jsonp",
       });
@@ -174,6 +175,7 @@ sap.ui.define([
     onDelete: function () {
       let data = this.getView().getModel(this.gender[this.getView().getModel().getProperty("/numbergender")] + "Players").oData[this.getView().getModel().getProperty("/number") - 1];
       console.log(data);
+      data.type= "Register";
       delete data["inOrOut"];
       delete data["number"];
       $.ajax({
@@ -181,7 +183,7 @@ sap.ui.define([
         url: "/api/delete/",
         data: data,
         success: function (oData) {
-          this.refreshMaleFemaleTables(this.getView().getModel("event").getProperty("/_id"))
+          this.refreshMaleFemaleTables(this.getView().getModel("event").getProperty("/Id"))
         }.bind(this),
         datatype: "jsonp",
       });

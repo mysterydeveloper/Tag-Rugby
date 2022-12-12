@@ -150,7 +150,7 @@
               </Column>
             </columns>
             <items>
-              <ColumnListItem type="Navigation" press=".onListItemPress" key="{events>_id}">
+              <ColumnListItem type="Navigation" press=".onListItemPress" key="{events>eventId}">
                 <cells>
                   <ObjectIdentifier title="{events>Date}" />
                   <ObjectIdentifier title="{events>State}" />

@@ -1,5 +1,10 @@
 const express = require('express');
 const path = require('path');
+const read = require('./src/Read')
+const create = require('./src/Create')
+const update = require('./src/Update')
+const Delete = require('./src/Delete')
+const runQuery = require('./src/runQuery')
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -12,48 +17,31 @@ app.use(express.static(path.resolve(__dirname, 'ui')));
 // Parse JSON bodies (as sent by API clients)
 app.use(express.json());
 
-var Datastore = require('nedb'),
-  db = new Datastore({
-    filename: 'db/dbfile',
-    autoload: true
-  });
+const Pool = require('pg').Pool
+const pool = new Pool({
+  user: process.env.postUser,
+  host: process.env.postHost,
+  database: process.env.postDatabase,
+  password: process.env.postPassword,
+  port: process.env.postPort,
+  ssl: true
+})
+
 
 app.post('/api/read', (req, res) => {
-  db.find(req.body, function (err, docs) {
-    res.json(docs);
-  });
+    runQuery.run(read.get(req.body), res, pool)
 });
 
 app.post('/api/create', (req, res) => {
-  if (Array.isArray(req.body)) {
-    for (let i = 0; i < req.body.length; i++) {
-      const element = req.body[i];
-      db.insert(element, function (err, newDocs) {
-      });
-    }
-    res.send(true)
-  }
-  else{
-    db.insert(req.body, function (err, newDocs) {
-        res.json(newDocs);
-    });
-    }
+    runQuery.run(create.get(req.body), res, pool);
 });
 
 app.post('/api/update', (req, res) => {
-  db.update({
-    _id: req.body["_id"]
-  }, req.body, {}, function (err, docs) {
-    res.json(docs);
-  });
+    runQuery.run(update.get(req.body), res, pool)
 });
 
 app.post('/api/delete', (req, res) => {
-  db.remove(req.body, {
-    multi: true
-  }, function (err, numRemoved) {
-    res.json(numRemoved);
-  });
+    runQuery.run(Delete.get(req.body), res, pool)
 });
 
 app.post('/api/login', (req, res) => {
