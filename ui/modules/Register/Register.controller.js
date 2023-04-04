@@ -80,14 +80,14 @@ sap.ui.define([
             return a.time - b.time;
           });
           let counter = 1;
-//           oData.forEach(element => {
+          oData.forEach(element => {
 //             if (counter > 16) {
 //               element.inOrOut = "Reserve"
 //             } else {
 //               element.inOrOut = "Playing"
 //             }
-//             element.number = counter++;
-//           });
+            element.number = counter++;
+          });
           var oModel = new JSONModel(oData);
           this.getView().setModel(oModel, "MalePlayers");
           BusyIndicator.hide();
@@ -107,15 +107,15 @@ sap.ui.define([
             return a.time - b.time;
           });
           let counter = 1;
-//           oData.forEach(element => {
+          oData.forEach(element => {
 //             if (counter > 12) {
 //               element.inOrOut = "Reserve"
 //             } else {
 //               element.inOrOut = "Playing"
 //             }
-//             element.number = counter++;
+            element.number = counter++;
 
-//           });
+          });
           var oModel = new JSONModel(oData);
           this.getView().setModel(oModel, "FemalePlayers");
         }.bind(this),
