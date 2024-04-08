@@ -81,11 +81,11 @@ sap.ui.define([
           });
           let counter = 1;
           oData.forEach(element => {
-            if (counter > 16) {
-              element.inOrOut = "Reserve"
-            } else {
-              element.inOrOut = "Playing"
-            }
+            // if (counter > 16) {
+            //   element.inOrOut = "Reserve"
+            // } else {
+            //   element.inOrOut = "Playing"
+            // }
             element.number = counter++;
           });
           var oModel = new JSONModel(oData);
@@ -108,11 +108,11 @@ sap.ui.define([
           });
           let counter = 1;
           oData.forEach(element => {
-            if (counter > 12) {
-              element.inOrOut = "Reserve"
-            } else {
-              element.inOrOut = "Playing"
-            }
+            // if (counter > 12) {
+            //   element.inOrOut = "Reserve"
+            // } else {
+            //   element.inOrOut = "Playing"
+            // }
             element.number = counter++;
 
           });
