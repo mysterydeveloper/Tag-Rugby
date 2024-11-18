@@ -81,7 +81,7 @@ sap.ui.define([
           });
           let counter = 1;
           oData.forEach(element => {
-            if (counter > 16) {
+            if (counter > 12) {
               element.inOrOut = "Reserve"
             } else {
               element.inOrOut = "Playing"
@@ -108,7 +108,7 @@ sap.ui.define([
           });
           let counter = 1;
           oData.forEach(element => {
-            if (counter > 16) {
+            if (counter > 12) {
               element.inOrOut = "Reserve"
             } else {
               element.inOrOut = "Playing"
