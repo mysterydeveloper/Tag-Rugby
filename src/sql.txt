@@ -1,0 +1,14 @@
+CREATE TABLE tag."Event" (
+    "Id" VARCHAR(255) PRIMARY KEY,
+    "Date" VARCHAR(255),
+    "State" VARCHAR(255)
+);
+
+CREATE TABLE tag."Register" (
+    "Id" VARCHAR(255) PRIMARY KEY,
+    "name" VARCHAR(255),
+    "time" VARCHAR(255),
+  	"gender" VARCHAR(255),
+  	"eventId" VARCHAR(255),
+  	"Team" VARCHAR(255)
+);
